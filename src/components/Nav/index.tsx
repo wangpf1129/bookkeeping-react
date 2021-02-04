@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 import Icon from '../Icon';
@@ -6,21 +6,28 @@ import Icon from '../Icon';
 
 const NavWrapper = styled.nav`
     background-color:#F9FAF5;
-    box-shadow: 0 0 3px rgba(0,0,0,.25);
     >ul{
       display: flex;
-     >li{
-       flex: 1;
-       text-align: center;
-       padding: 8px 0 ;
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       .icon{
-         width: 24px;
-         height: 24px;
+      >li{
+         flex: 1;
+         text-align: center;
+         padding: 8px 0 ;
+         .selected{
+          color: #81b7aa;
+          .icon{fill:#81b7aa}
+         }
+         .icon{
+          width: 24px;
+          height: 24px;
+          fill:#b7bdcd;
+         } 
+       a{
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         color: #b7bdcd;
        }
-     }
+      }
     }
 `;
 
@@ -29,22 +36,22 @@ function Nav() {
           <NavWrapper>
             <ul>
               <li>
-                <Link to="/home">
+                <NavLink to="/home" activeClassName="selected">
                   <Icon name="home"/>
-                  <p>TODAY</p>
-                </Link>
+                  TODAY
+                </NavLink>
               </li>
               <li>
-                <Link to="/statistics">
+                <NavLink to="/statistics" activeClassName="selected">
                   <Icon name="statistics"/>
-                  <p>统计</p>
-                </Link>
+                  统计
+                </NavLink>
               </li>
               <li>
-                <Link to="/assets">
+                <NavLink to="/assets" activeClassName="selected">
                   <Icon name="assets"/>
-                  <p>资产</p>
-                </Link>
+                  资产
+                </NavLink>
               </li>
             </ul>
           </NavWrapper>
