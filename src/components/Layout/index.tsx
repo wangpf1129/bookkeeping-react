@@ -1,20 +1,23 @@
 import Nav from '../Nav';
 import React from 'react';
 import styled from 'styled-components';
+import TopNav from '../TopNav';
 
 const Wrapper =styled.div`
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 `
 const Main = styled.div`
   flex: 1;
-  overflow: auto;
+  overflow-y: auto;
 `
 
 function Layout(props:any) {
+  console.log(props);
   return (
           <Wrapper>
+            <TopNav>{props.name}</TopNav>
             <Main>
               {props.children}
             </Main>

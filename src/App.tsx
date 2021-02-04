@@ -5,10 +5,10 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import Assets from './views/Assets';
-import Home from './views/Home';
-import Statistics from './views/Statistics';
-import NoMatch from './views/NoMatch';
+import Assets from 'views/Assets';
+import Home from 'views/Home';
+import Statistics from 'views/Statistics';
+import NoMatch from 'views/NoMatch';
 
 
  function App() {

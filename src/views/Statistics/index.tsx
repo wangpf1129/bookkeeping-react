@@ -1,9 +1,9 @@
-import Layout from '../../components/Layout';
+import Layout from 'components/Layout';
 import React from 'react';
 
 function Statistics() {
   return (
-          <Layout>
+          <Layout name="统计">
             <h2>统计页面</h2>
           </Layout>
   );
