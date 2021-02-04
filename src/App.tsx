@@ -3,10 +3,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from 'react-router-dom';
 import styled from 'styled-components';
+
+import Nav from 'components/Nav'
 
 const Wrapper =styled.div`
   min-height: 100vh;
@@ -17,17 +18,7 @@ const Main = styled.div`
   flex: 1;
   overflow: auto;
 `
-const Nav = styled.nav`
-    border: 1px solid seagreen;
-    >ul{
-      display: flex;
-     >li{
-       flex: 1;
-       text-align: center;
-       padding: 16px;
-     }
-    }
-`
+
 
 export default function App() {
   return (
@@ -42,19 +33,7 @@ export default function App() {
                 <Route path="*" component={NoMatch} />
               </Switch>
               </Main>
-              <Nav>
-                <ul>
-                  <li>
-                    <Link to="/home">TODAY</Link>
-                  </li>
-                  <li>
-                    <Link to="/statistics">统计</Link>
-                  </li>
-                  <li>
-                    <Link to="/assets">资产</Link>
-                  </li>
-                </ul>
-              </Nav>
+              <Nav />
             </Wrapper>
           </Router>
   );
