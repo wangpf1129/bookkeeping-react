@@ -2,7 +2,6 @@ import {Link} from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 
-
 const NavWrapper = styled.nav`
     background-color:#F9FAF5;
     box-shadow: 0 0 3px rgba(0,0,0,.25);
