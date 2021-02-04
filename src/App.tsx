@@ -5,10 +5,13 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
+import Assets from './views/Assets';
+import Home from './views/Home';
+import Statistics from './views/Statistics';
+import NoMatch from './views/NoMatch';
 
-import Layout from './components/Layout';
 
-export default function App() {
+ function App() {
   return (
           <Router>
             <Switch>
@@ -22,36 +25,5 @@ export default function App() {
   );
 }
 
-function Home() {
-  return (
-          <Layout>
-            <h2>TODAY</h2>
-          </Layout>
-  );
-}
+export default App
 
-function Statistics() {
-  return (
-          <Layout>
-            <h2>统计页面</h2>
-          </Layout>
-  );
-}
-
-function Assets() {
-  return (
-          <Layout>
-            <h2>资产页面</h2>
-          </Layout>
-  );
-}
-
-function NoMatch() {
-  return (
-          <div>
-            <h3>
-              404，页面找不到！
-            </h3>
-          </div>
-  );
-}
