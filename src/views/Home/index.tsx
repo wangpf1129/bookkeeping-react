@@ -6,7 +6,6 @@ import styled from 'styled-components';
 
 
 const MoneyLink = styled.div`
- border: 1px solid red;
  margin: 28px auto 0;
  background-color:#A1DECF;
  font-size: 18px;
@@ -18,7 +17,6 @@ const MoneyLink = styled.div`
 `;
 const ShowMoney = styled.div`
   margin-top: 94px; 
-  border: 1px solid blue;
   display:flex;
   flex-direction: column;
   align-items: center;

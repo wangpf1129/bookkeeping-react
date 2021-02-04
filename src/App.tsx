@@ -13,15 +13,15 @@ import NoMatch from 'views/NoMatch';
 
  function App() {
   return (
-          <Router>
-            <Switch>
-              <Route path="/home" component={Home}/>
-              <Route path="/statistics" component={Statistics}/>
-              <Route path="/assets" component={Assets}/>
-              <Redirect exact from="/" to="/home"/>
-              <Route path="*" component={NoMatch}/>
-            </Switch>
-          </Router>
+            <Router>
+              <Switch>
+                <Route path="/home" component={Home}/>
+                <Route path="/statistics" component={Statistics}/>
+                <Route path="/assets" component={Assets}/>
+                <Redirect exact from="/" to="/home"/>
+                <Route path="*" component={NoMatch}/>
+              </Switch>
+            </Router>
   );
 }
 

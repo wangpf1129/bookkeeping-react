@@ -11,6 +11,9 @@ body{
   font-size: 16px;
   line-height: 1.2;
 }
+:focus{
+  outline: none;
+}
 .icon{
   width: 1em;
   height: 1em;

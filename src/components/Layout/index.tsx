@@ -14,7 +14,6 @@ const Main = styled.div`
 `
 
 function Layout(props:any) {
-  console.log(props);
   return (
           <Wrapper>
             <TopNav>{props.name}</TopNav>
