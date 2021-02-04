@@ -5,50 +5,45 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import styled from 'styled-components';
 
-import Nav from 'components/Nav'
-
-const Wrapper =styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-`
-const Main = styled.div`
-  flex: 1;
-  overflow: auto;
-`
-
+import Layout from './components/Layout';
 
 export default function App() {
   return (
           <Router>
-            <Wrapper>
-              <Main>
-              <Switch>
-                <Route path="/home" component={Home} />
-                <Route path="/statistics" component={Statistics}/>
-                <Route path="/assets" component={Assets} />
-                <Redirect from="/" to="/home" />
-                <Route path="*" component={NoMatch} />
-              </Switch>
-              </Main>
-              <Nav />
-            </Wrapper>
+            <Switch>
+              <Route path="/home" component={Home}/>
+              <Route path="/statistics" component={Statistics}/>
+              <Route path="/assets" component={Assets}/>
+              <Redirect exact from="/" to="/home"/>
+              <Route path="*" component={NoMatch}/>
+            </Switch>
           </Router>
   );
 }
 
 function Home() {
-  return <h2>TODAY</h2>;
+  return (
+          <Layout>
+            <h2>TODAY</h2>
+          </Layout>
+  );
 }
 
 function Statistics() {
-  return <h2>统计</h2>;
+  return (
+          <Layout>
+            <h2>统计页面</h2>
+          </Layout>
+  );
 }
 
 function Assets() {
-  return <h2>资产</h2>;
+  return (
+          <Layout>
+            <h2>资产页面</h2>
+          </Layout>
+  );
 }
 
 function NoMatch() {
