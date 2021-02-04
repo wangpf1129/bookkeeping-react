@@ -7,19 +7,21 @@ const TagsSection = styled.section`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    margin-right: -24px;
     >li{
       background-color:#eee;
       border-radius: 10px;
       padding: 10px;
-      margin: 5px 10px;
+      margin-top: 24px;
+      margin-right: 12px;
       display:flex;
       flex-direction: column;
       text-align: center;
-      font-size: 14px;
+      font-size: 12px;
       >span{padding-top: 5px}
       .icon{
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
         fill:rgba(0,0,0,.6)
       }
     }

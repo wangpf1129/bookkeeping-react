@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import TopNav from 'components/TopNav';
 import Icon from 'components/Icon';
 
@@ -28,7 +29,6 @@ const Main = styled.div`
   overflow: auto;
 `;
 
-
 function Money(props: any) {
   return (
           <Wrapper>
@@ -54,15 +54,15 @@ function Money(props: any) {
                     <span>日用</span>
                   </li>
                   <li>
-                    <Icon name="play"/>
+                    <Icon name="chat"/>
                     <span>通讯</span>
                   </li>
                   <li>
-                    <Icon name="play"/>
+                    <Icon name="fruits"/>
                     <span>果蔬</span>
                   </li>
                   <li>
-                    <Icon name="play"/>
+                    <Icon name="traffic"/>
                     <span>交通</span>
                   </li>
                   <li>

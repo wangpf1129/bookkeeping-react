@@ -22,10 +22,10 @@ const NotesSection = styled.section`
     }
     >span{
       position: absolute;
-      top: 2px;
-      right: 8px;
+      top: 3px;
+      right: 10px;
       font-weight: 800;
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 `;
