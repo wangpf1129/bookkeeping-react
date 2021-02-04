@@ -1,10 +1,8 @@
 import {Link} from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
+import Icon from '../Icon';
 
-require('icons/home.svg');
-require('icons/assets.svg');
-require('icons/statistics.svg');
 
 const NavWrapper = styled.nav`
     background-color:#F9FAF5;
@@ -32,25 +30,19 @@ function Nav() {
             <ul>
               <li>
                 <Link to="/home">
-                  <svg className="icon">
-                    <use xlinkHref="#home"/>
-                  </svg>
+                  <Icon name="home"/>
                   <p>TODAY</p>
                 </Link>
               </li>
               <li>
                 <Link to="/statistics">
-                  <svg className="icon">
-                    <use xlinkHref="#statistics"/>
-                  </svg>
+                  <Icon name="statistics"/>
                   <p>统计</p>
                 </Link>
               </li>
               <li>
                 <Link to="/assets">
-                  <svg className="icon">
-                    <use xlinkHref="#assets"/>
-                  </svg>
+                  <Icon name="assets"/>
                   <p>资产</p>
                 </Link>
               </li>
