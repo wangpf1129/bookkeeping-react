@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import React from 'react';
 
-const NumberPadSection = styled.section`
+const Wrapper = styled.section`
   padding: 10px 20px;
   > section {
   display: flex;
@@ -28,4 +29,30 @@ const NumberPadSection = styled.section`
   }
 `;
 
-export {NumberPadSection}
+
+function NumberPadSection() {
+  return (
+          <Wrapper>
+            <section>
+              <button>1</button>
+              <button>2</button>
+              <button>3</button>
+              <button className="today">今日</button>
+              <button>4</button>
+              <button>5</button>
+              <button>6</button>
+              <button>+</button>
+              <button>7</button>
+              <button>8</button>
+              <button>9</button>
+              <button>-</button>
+              <button>.</button>
+              <button>0</button>
+              <button>清零</button>
+              <button className="complete">完成</button>
+            </section>
+          </Wrapper>
+  );
+}
+
+export {NumberPadSection};

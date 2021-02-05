@@ -2,13 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import TopNav from 'components/TopNav';
-import Icon from 'components/Icon';
 
 import {CategorySection} from './CategorySection';
-import {KeyboardSection} from './KeyboardSection';
+import {TagsSection} from './TagsSection';
 import {NotesSection} from './NotesSection';
 import {NumberPadSection} from './NumberPadSection';
-import {TagsSection} from './TagsSection';
 
 
 const Wrapper = styled.div`
@@ -28,78 +26,24 @@ const Main = styled.div`
   flex: 1;
   overflow: auto;
 `;
+const KeyboardSection = styled.section`
+  background-color:#9ccac0;
+  box-shadow: 2px 2px 3px rgba(0,0,0,.8);
+`;
+
 
 function Money(props: any) {
   return (
           <Wrapper>
             <TopNav name="back" {...props}>
-              <CategorySection>
-                <span className="selected">支出</span>
-                <span>收入</span>
-              </CategorySection>
+              <CategorySection />
             </TopNav>
             <Main>
-              <TagsSection>
-                <ol>
-                  <li className="active">
-                    <Icon name="eat"/>
-                    <span>餐饮</span>
-                  </li>
-                  <li>
-                    <Icon name="play"/>
-                    <span>娱乐</span>
-                  </li>
-                  <li>
-                    <Icon name="daily"/>
-                    <span>日用</span>
-                  </li>
-                  <li>
-                    <Icon name="chat"/>
-                    <span>通讯</span>
-                  </li>
-                  <li>
-                    <Icon name="fruits"/>
-                    <span>果蔬</span>
-                  </li>
-                  <li>
-                    <Icon name="traffic"/>
-                    <span>交通</span>
-                  </li>
-                  <li>
-                    <Icon name="add"/>
-                    <span>添加</span>
-                  </li>
-                </ol>
-              </TagsSection>
+              <TagsSection/>
             </Main>
             <KeyboardSection>
-              <NotesSection>
-                <label>
-                  <Icon name="note"/>
-                  <input type="text" placeholder="点击写备注..."/>
-                  <span>30</span>
-                </label>
-              </NotesSection>
-              <NumberPadSection>
-                <section>
-                  <button>1</button>
-                  <button>2</button>
-                  <button>3</button>
-                  <button className="today">今日</button>
-                  <button>4</button>
-                  <button>5</button>
-                  <button>6</button>
-                  <button>+</button>
-                  <button>7</button>
-                  <button>8</button>
-                  <button>9</button>
-                  <button>-</button>
-                  <button>.</button>
-                  <button>0</button>
-                  <button>清零</button>
-                  <button className="complete">完成</button>
-                </section>
-              </NumberPadSection>
+              <NotesSection/>
+              <NumberPadSection />
             </KeyboardSection>
           </Wrapper>
   );

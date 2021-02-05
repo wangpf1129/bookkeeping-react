@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import Icon from 'components/Icon';
+import React from 'react';
 
-const NotesSection = styled.section`
+const Wrapper = styled.section`
     padding: 10px 20px;
   > label{
     position: relative;
@@ -29,5 +31,18 @@ const NotesSection = styled.section`
     }
   }
 `;
+
+
+function NotesSection() {
+  return (
+          <Wrapper>
+            <label>
+              <Icon name="note"/>
+              <input type="text" placeholder="点击写备注..."/>
+              <span>30</span>
+            </label>
+          </Wrapper>
+  )
+}
 
 export  {NotesSection}
