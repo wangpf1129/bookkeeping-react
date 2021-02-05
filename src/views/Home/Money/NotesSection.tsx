@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Icon from 'components/Icon';
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 const Wrapper = styled.section`
     padding: 10px 20px;
@@ -33,12 +33,28 @@ const Wrapper = styled.section`
 `;
 
 
-function NotesSection() {
+const NotesSection:React.FC =()=> {
+  const [note,setNote] = useState("")
+  const inputRef = useRef<HTMLInputElement>(null)
+  const onBlur = ()=>{
+    if(inputRef.current !== null){
+      setNote(inputRef.current.value.trim())
+    }
+  }
+  useEffect(()=>{
+    if(note !== ""){
+      console.log(note);
+    }
+  },[note])
   return (
           <Wrapper>
             <label>
               <Icon name="note"/>
-              <input type="text" placeholder="点击写备注..."/>
+              <input type="text" placeholder="点击写备注..."
+                    defaultValue={note}
+                     ref ={inputRef}
+                     onBlur={onBlur}
+              />
               <span>30</span>
             </label>
           </Wrapper>

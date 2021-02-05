@@ -30,7 +30,7 @@ const Wrapper = styled.section`
 `;
 
 
-function NumberPadSection() {
+const NumberPadSection:React.FC=() =>{
   return (
           <Wrapper>
             <section>

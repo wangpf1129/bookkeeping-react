@@ -10,7 +10,7 @@ const Wrapper = styled.section`
   }
 `
 
-function CategorySection() {
+const CategorySection:React.FC =()=> {
   return (
           <Wrapper>
             <span className="selected">支出</span>
