@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Icon from 'components/Icon';
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState} from 'react';
 
 const Wrapper = styled.section`
     padding: 10px 20px;
@@ -33,7 +33,8 @@ const Wrapper = styled.section`
 `;
 
 
-const NotesSection:React.FC =()=> {
+
+const NotesSection:React.FC =(props)=> {
   const [note,setNote] = useState("")
   const inputRef = useRef<HTMLInputElement>(null)
   const onBlur = ()=>{
@@ -55,7 +56,7 @@ const NotesSection:React.FC =()=> {
                      ref ={inputRef}
                      onBlur={onBlur}
               />
-              <span>30</span>
+              {/*<span>123</span>*/}
             </label>
           </Wrapper>
   )

@@ -5,9 +5,7 @@ import TopNav from 'components/TopNav';
 
 import {CategorySection} from './CategorySection';
 import {TagsSection} from './TagsSection';
-import {NotesSection} from './NotesSection';
-import {NumberPadSection} from './NumberPadSection';
-
+import {KeyboardSection} from './KeyboardSection';
 
 const Wrapper = styled.div`
     background-color:#fff;
@@ -26,10 +24,6 @@ const Main = styled.div`
   flex: 1;
   overflow: auto;
 `;
-const KeyboardSection = styled.section`
-  background-color:#9ccac0;
-  box-shadow: 2px 2px 3px rgba(0,0,0,.8);
-`;
 
 
 function Money(props: any) {
@@ -41,10 +35,7 @@ function Money(props: any) {
             <Main>
               <TagsSection/>
             </Main>
-            <KeyboardSection>
-              <NotesSection/>
-              <NumberPadSection />
-            </KeyboardSection>
+            <KeyboardSection />
           </Wrapper>
   );
 }
