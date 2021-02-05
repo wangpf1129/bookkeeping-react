@@ -39,7 +39,12 @@ const Wrapper = styled.section`
   }
 `;
 
-const NumberPadSection: React.FC = (props) => {
+type  Props = {
+  amount:number,
+  onChangeAmount:(amount:number)=>void,
+  onOk ?: ()=>void
+}
+const NumberPadSection: React.FC<Props> = (props) => {
   const [output, _setOutput] = useState('0');
   const setOutput = (output:string) => {
     if (output.length > 16) {
@@ -48,11 +53,17 @@ const NumberPadSection: React.FC = (props) => {
       output = '0';
     }
     _setOutput(output);
+    props.onChangeAmount(parseFloat(output))
   };
-
+  console.log(props.amount);
   const getButton = (e: React.MouseEvent) => {
     const text = (e.target as HTMLBaseElement).textContent;
     if (text === null) return;
+    if(text === '完成'){
+      if(props.onOk){
+        props.onOk();
+      }
+    }
     setOutput(generateOutput(text,output))
   };
 

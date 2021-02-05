@@ -35,19 +35,21 @@ const Wrapper = styled.section`
   }
 `;
 
-
-const TagsSection:React.FC=()=> {
+type Props = {
+  value:string[],
+  onChange:(value:string[])=>void
+}
+const TagsSection:React.FC<Props>=(props)=> {
   const [tags,setTags] = useState<string[]>(["餐饮","娱乐","日用","通讯","果蔬","交通"])
-  const [selectedTags,setSelectedTags] = useState<string[]>([])
-
+  const selectedTags = props.value
   const toggleTag = (tag:string)=>{
     return ()=>{
       const index = selectedTags.indexOf(tag)
       if(index >= 0){
         // 如果 该 tag被选中，就复制所有没有被选中的 tag 作为新的 selectedTag
-        setSelectedTags(selectedTags.filter(item => item !== tag))
+        props.onChange(selectedTags.filter(item => item !== tag))
       }else{
-        setSelectedTags([tag])
+        props.onChange([tag])
       }
     }
   }

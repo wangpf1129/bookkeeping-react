@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 import TopNav from 'components/TopNav';
@@ -25,17 +25,45 @@ const Main = styled.div`
   overflow: auto;
 `;
 
+type Category = "-" | "+"
 
 function Money(props: any) {
+  const [selected,setSelected] = useState({
+    tags:[] as string[], // 标签
+    note:"",  // 备注
+    category:"-" as Category, // 收入/支出
+    amount:0  // 总和
+  })
+  const onChange = (obj:Partial<typeof selected>)=>{
+    setSelected({
+            ...selected,
+            ...obj
+    })
+  }
   return (
           <Wrapper>
             <TopNav name="back" {...props}>
-              <CategorySection />
+              <CategorySection value={selected.category}
+                               onChange={(category)=>{onChange({category})}}
+              />
             </TopNav>
             <Main>
-              <TagsSection/>
+              {selected.category}
+              <hr/>
+              {selected.tags.join('.')}
+              <hr/>
+              {selected.note}
+              <hr/>
+              {selected.amount}
+              <TagsSection value={selected.tags}
+                           onChange={(tags)=>{onChange({tags})}}
+              />
             </Main>
-            <KeyboardSection />
+            <KeyboardSection note={selected.note} amount = {selected.amount}
+                             onChangeNote={(note)=>{onChange({note})}}
+                             onChangeAmount ={(amount)=>{onChange({amount})}}
+                             onOk={()=>{}}
+            />
           </Wrapper>
   );
 }

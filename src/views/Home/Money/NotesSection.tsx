@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Icon from 'components/Icon';
-import React, { useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef} from 'react';
 
 const Wrapper = styled.section`
     padding: 10px 20px;
@@ -22,24 +22,27 @@ const Wrapper = styled.section`
       height: 32px;
       fill:#a7e0d1;
     }
-    >span{
-      position: absolute;
-      top: 3px;
-      right: 10px;
-      font-weight: 800;
-      font-size: 16px;
-    }
+    //>span{
+    //  position: absolute;
+    //  top: 3px;
+    //  right: 10px;
+    //  font-weight: 800;
+    //  font-size: 16px;
+    //}
   }
 `;
 
 
-
-const NotesSection:React.FC =(props)=> {
-  const [note,setNote] = useState("")
+type  Props = {
+  note:string,
+  onChangeNote:(value:string)=>void
+}
+const NotesSection:React.FC<Props>=(props)=> {
+  const note = props.note
   const inputRef = useRef<HTMLInputElement>(null)
   const onBlur = ()=>{
     if(inputRef.current !== null){
-      setNote(inputRef.current.value.trim())
+      props.onChangeNote(inputRef.current.value.trim())
     }
   }
   useEffect(()=>{
