@@ -21,6 +21,7 @@ const Wrapper = styled.div`
     overflow-x: hidden;
 `;
 const Main = styled.div`
+   background-color:#fafbf6;
   flex: 1;
   overflow: auto;
 `;
@@ -58,6 +59,7 @@ function Money(props: any) {
               <TagsSection value={selected.tags}
                            onChange={(tags)=>{onChange({tags})}}
               />
+
             </Main>
             <KeyboardSection note={selected.note} amount = {selected.amount}
                              onChangeNote={(note)=>{onChange({note})}}

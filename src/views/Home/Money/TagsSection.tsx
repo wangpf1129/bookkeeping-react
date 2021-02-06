@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import Icon from 'components/Icon';
-import React, { useState} from 'react';
+import React from 'react';
+import {Link, Route, Switch, useRouteMatch} from 'react-router-dom';
+import Edit from './Edit';
+import useTags from '../../../common/useTags';
 
 const Wrapper = styled.section`
    padding: 20px 38px;   
@@ -11,7 +14,7 @@ const Wrapper = styled.section`
     justify-content: flex-start;
     margin-right: -24px;
     >li{
-      background-color:#eee;
+      background-color:#fff;
       border-radius: 10px;
       box-shadow: 2px 3px 4px #ddd;
       padding: 10px;
@@ -36,47 +39,54 @@ const Wrapper = styled.section`
 `;
 
 type Props = {
-  value:string[],
-  onChange:(value:string[])=>void
+  value: string[],
+  onChange: (value: string[]) => void
 }
-const TagsSection:React.FC<Props>=(props)=> {
-  const [tags,setTags] = useState<string[]>(["餐饮","娱乐","日用","通讯","果蔬","交通"])
-  const selectedTags = props.value
-  const toggleTag = (tag:string)=>{
-    return ()=>{
-      const index = selectedTags.indexOf(tag)
-      if(index >= 0){
+const TagsSection: React.FC<Props> = (props) => {
+  let {path, url} = useRouteMatch();
+  const {tags} = useTags();
+  const selectedTags = props.value;
+  const toggleTag = (tag: string) => {
+    return () => {
+      const index = selectedTags.indexOf(tag);
+      if (index >= 0) {
         // 如果 该 tag被选中，就复制所有没有被选中的 tag 作为新的 selectedTag
-        props.onChange(selectedTags.filter(item => item !== tag))
-      }else{
-        props.onChange([tag])
+        props.onChange(selectedTags.filter(item => item !== tag));
+      } else {
+        props.onChange([tag]);
       }
-    }
-  }
+    };
+  };
 
-  const addTag = ()=>{
-    const tagName = window.prompt("请输入你想要添加的标签")
-    if(tagName !== null){
-      setTags([...tags,tagName])
-    }
-  }
+  const addTag = () => {
+    // const tagName = window.prompt("请输入你想要添加的标签")
+    // if(tagName !== null){
+    //   setTags([...tags,tagName])
+    // }
+  };
 
   return (
-        <Wrapper>
-          <ol>
-            {tags.map((tag)=>{
-              return (
-                <li key={tag} onClick={toggleTag(tag)} className={selectedTags.indexOf(tag) >= 0 ? "selected" : ""}>
-                 <Icon name={tag}/>
-                 <span>{tag}</span>
-              </li>)
-            })}
-            <li onClick={addTag}>
-              <Icon name="add"/>
-              <span>设置</span>
-            </li>
-          </ol>
-        </Wrapper>
-)
-}
-export {TagsSection}
+          <Wrapper>
+            <ol>
+              {tags.map((tag) => {
+                return (
+                        <li key={tag} onClick={toggleTag(tag)}
+                            className={selectedTags.indexOf(tag) >= 0 ? 'selected' : ''}>
+                          <Icon name={tag}/>
+                          <span>{tag}</span>
+                        </li>);
+              })}
+              <li onClick={addTag}>
+                <Icon name="set"/>
+                <span>
+                <Link to={`${url}/edit`}>设置</Link>
+              </span>
+              </li>
+            </ol>
+            <Switch>
+              <Route path={`${path}/:edit`} component={Edit}/>
+            </Switch>
+          </Wrapper>
+  );
+};
+export {TagsSection};
