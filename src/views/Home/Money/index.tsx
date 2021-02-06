@@ -2,24 +2,13 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 
 import TopNav from 'components/TopNav';
+import {Wrapper} from 'components/Wrapper';
 
 import {CategorySection} from './CategorySection';
 import {TagsSection} from './TagsSection';
 import {KeyboardSection} from './KeyboardSection';
 
-const Wrapper = styled.div`
-    background-color:#fff;
-    height: 100vh;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-`;
+
 const Main = styled.div`
    background-color:#fafbf6;
   flex: 1;

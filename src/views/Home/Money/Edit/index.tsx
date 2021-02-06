@@ -1,21 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import TopNav from 'components/TopNav';
-import useTags from '../../../../common/useTags';
-import Icon from '../../../../components/Icon';
+import {Wrapper} from 'components/Wrapper';
+import Icon from 'components/Icon';
 
-const Wrapper = styled.div`
-    background-color:#fff;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    z-index: 1;
-`;
+import useTags from 'common/useTags';
+import {Link, Route, Switch, useRouteMatch} from 'react-router-dom';
+import {EditTag} from './EditTag';
+
 const TypeSection = styled.section`
   margin-top: 12px;
   margin-bottom: 22px;
@@ -34,6 +26,7 @@ const TypeSection = styled.section`
   }
 `
 const TagsList = styled.section`
+  flex: 1;
   ul{
     display: flex;
     flex-direction: column;
@@ -57,14 +50,21 @@ const TagsList = styled.section`
           height: 42px;
         }
       }
-      > .icon{
-         width: 32px;
-         height: 32px;
-       }
+      .icon{
+         width: 24px;
+         height: 24px;
+      }
   }
 `
+const AddTag = styled.section`
+  text-align: center;
+  background-color:#9ccac0;
+  font-size: 22px;
+  padding: 14px 0;
+`
 
-const Edit = (props: any) => {
+const Edit:React.FC = (props: any) => {
+  const {path, url} = useRouteMatch();
   const {tags} = useTags();
   return (
           <Wrapper>
@@ -85,12 +85,23 @@ const Edit = (props: any) => {
                               <Icon name={tag}/>
                               <span>{tag}</span>
                             </div>
-                            <Icon name="more"/>
+                            <Link to={`${url}/${tag}`}>
+                              <Icon name="more"/>
+                            </Link>
                           </li>);
                 })
               }
             </ul>
             </TagsList>
+            <AddTag>
+              <Link to={`${url}/create_tag`}>
+              添加类别
+              </Link>
+            </AddTag>
+            <Switch>
+              <Route path={`${path}/:tag`} component={EditTag}/>
+              <Route path={`${path}/:tag`} component={EditTag}/>
+            </Switch>
           </Wrapper>
   );
 };

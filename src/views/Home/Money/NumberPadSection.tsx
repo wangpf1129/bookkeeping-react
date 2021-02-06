@@ -55,7 +55,6 @@ const NumberPadSection: React.FC<Props> = (props) => {
     _setOutput(output);
     props.onChangeAmount(parseFloat(output))
   };
-  console.log(props.amount);
   const getButton = (e: React.MouseEvent) => {
     const text = (e.target as HTMLBaseElement).textContent;
     if (text === null) return;
