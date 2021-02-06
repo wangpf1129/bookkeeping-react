@@ -80,12 +80,12 @@ const Edit:React.FC = (props: any) => {
               {
                 tags.map((tag) => {
                   return (
-                          <li key={tag}>
+                          <li key={tag.id}>
                             <div className="tags">
-                              <Icon name={tag}/>
-                              <span>{tag}</span>
+                              <Icon name={tag.name}/>
+                              <span>{tag.name}</span>
                             </div>
-                            <Link to={`${url}/${tag}`}>
+                            <Link to={`${url}/${tag.name}`}>
                               <Icon name="more"/>
                             </Link>
                           </li>);

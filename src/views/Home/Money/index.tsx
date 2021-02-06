@@ -19,7 +19,7 @@ type Category = "-" | "+"
 
 function Money(props: any) {
   const [selected,setSelected] = useState({
-    tags:[] as string[], // 标签
+    tagIds:[] as number[], // 标签
     note:"",  // 备注
     category:"-" as Category, // 收入/支出
     amount:0  // 总和
@@ -40,13 +40,13 @@ function Money(props: any) {
             <Main>
               {selected.category}
               <hr/>
-              {selected.tags.join('.')}
+              {selected.tagIds.join('.')}
               <hr/>
               {selected.note}
               <hr/>
               {selected.amount}
-              <TagsSection value={selected.tags}
-                           onChange={(tags)=>{onChange({tags})}}
+              <TagsSection value={selected.tagIds}
+                           onChange={(tagIds)=>{onChange({tagIds})}}
               />
 
             </Main>

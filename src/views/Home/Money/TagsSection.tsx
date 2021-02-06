@@ -39,21 +39,21 @@ const Wrapper = styled.section`
 `;
 
 type Props = {
-  value: string[],
-  onChange: (value: string[]) => void
+  value: number[],
+  onChange: (value: number[]) => void
 }
 const TagsSection: React.FC<Props> = (props) => {
   let {path, url} = useRouteMatch();
   const {tags} = useTags();
-  const selectedTags = props.value;
-  const toggleTag = (tag: string) => {
+  const selectedTagIds = props.value;
+  const toggleTag = (tagId: number) => {
     return () => {
-      const index = selectedTags.indexOf(tag);
+      const index = selectedTagIds.indexOf(tagId);
       if (index >= 0) {
         // 如果 该 tag被选中，就复制所有没有被选中的 tag 作为新的 selectedTag
-        props.onChange(selectedTags.filter(item => item !== tag));
+        props.onChange(selectedTagIds.filter(item => item !== tagId));
       } else {
-        props.onChange([tag]);
+        props.onChange([tagId]);
       }
     };
   };
@@ -70,10 +70,10 @@ const TagsSection: React.FC<Props> = (props) => {
             <ol>
               {tags.map((tag) => {
                 return (
-                        <li key={tag} onClick={toggleTag(tag)}
-                            className={selectedTags.indexOf(tag) >= 0 ? 'selected' : ''}>
-                          <Icon name={tag}/>
-                          <span>{tag}</span>
+                        <li key={tag.id} onClick={toggleTag(tag.id)}
+                            className={selectedTagIds.indexOf(tag.id) >= 0 ? 'selected' : ''}>
+                          <Icon name={tag.name}/>
+                          <span>{tag.name}</span>
                         </li>);
               })}
               <li onClick={addTag}>
