@@ -25,19 +25,26 @@ const useTags = ()=>{
     return result
   }
 
-  // 更新该标签
+  // 修改该标签
   const updateTag = (id:number,obj:{name:string})=>{
     const index = findIndex(id)
-    // 深拷贝 tags 得到 tagsClon
+    // 深拷贝 tags 得到 tagsClone
     const tagsClone = JSON.parse(JSON.stringify(tags))
     tagsClone.splice(index,1,{id:id,name:obj.name})
     setTags(tagsClone)
   }
-  console.log(tags);
-  return {tags,setTags,findTag,findIndex,updateTag}
+  // 删除该标签
+  const deleteTag = (id:number)=>{
+    const index = findIndex(id)
+    // 深拷贝 tags 得到 tagsClone
+    const tagsClone = JSON.parse(JSON.stringify(tags))
+    tagsClone.splice(index,1)
+    setTags(tagsClone)
+  }
+  // console.log(tags);
+  return {tags,setTags,findTag,findIndex,updateTag,deleteTag}
 }
 
 export default useTags
 
-// "餐饮","娱乐","日用","通讯","果蔬","交通"
 
