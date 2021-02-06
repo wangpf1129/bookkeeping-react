@@ -42,7 +42,7 @@ const Button = styled.section`
     outline: none;
     font-size: 16px;
     border-radius: 4px;
-    padding: 10px;
+    padding: 10px 24px;
     margin: 0 24px;
     &.save{
       border: 1px solid #9CCAC0;
