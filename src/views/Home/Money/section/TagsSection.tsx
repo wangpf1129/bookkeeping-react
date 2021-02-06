@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import Icon from 'components/Icon';
 import React from 'react';
 import {Link, Route, Switch, useRouteMatch} from 'react-router-dom';
-import Edit from './Edit';
-import useTags from '../../../common/useTags';
+import Edit from '../Edit';
+import useTags from '../../../../common/useTags';
 
 const Wrapper = styled.section`
    padding: 20px 38px;   
@@ -13,11 +13,12 @@ const Wrapper = styled.section`
     flex-wrap: wrap;
     justify-content: flex-start;
     margin-right: -24px;
+    margin-left: -4px;
     >li{
       background-color:#fff;
       border-radius: 10px;
       box-shadow: 2px 3px 4px #ddd;
-      padding: 10px;
+      padding: 10px 12px;
       margin-top: 24px;
       margin-right: 12px;
       display:flex;
@@ -72,7 +73,7 @@ const TagsSection: React.FC<Props> = (props) => {
                 return (
                         <li key={tag.id} onClick={toggleTag(tag.id)}
                             className={selectedTagIds.indexOf(tag.id) >= 0 ? 'selected' : ''}>
-                          <Icon name={tag.name}/>
+                          <Icon name={(tag.id).toString()}/>
                           <span>{tag.name}</span>
                         </li>);
               })}

@@ -1,5 +1,5 @@
-import React from 'react';
-import {useParams} from 'react-router-dom'
+import React, {useRef} from 'react';
+import {useParams} from 'react-router-dom';
 import {Wrapper} from 'components/Wrapper';
 import TopNav from 'components/TopNav';
 import Icon from 'components/Icon';
@@ -9,7 +9,7 @@ import useTags from 'common/useTags';
 import styled from 'styled-components';
 
 
-const InputTag= styled.section`
+const InputTag = styled.section`
   padding: 12px 16px;
   > label{
     display: flex;
@@ -31,30 +31,51 @@ const InputTag= styled.section`
     
   }
   
-`
+`;
 
-type Params ={
-  id:string
+type Params = {
+  id: string
 }
-const EditTag:React.FC = (props:any)=>{
-  const {findTag} = useTags()
-  const {id} =useParams<Params>()
-  const tag = findTag(parseInt(id))
+const EditTag: React.FC = (props: any) => {
+  const {findTag,updateTag} = useTags();
+  const {id} = useParams<Params>();
+  const tag = findTag(parseInt(id));
+
+  const inputRef = useRef<HTMLInputElement>(null)
+  const onBlur = ()=>{
+    if(inputRef.current !== null){
+      // console.log(inputRef.current.value.trim());
+      updateTag(tag.id,{name:inputRef.current.value.trim()})
+    }
+  }
   return (
           <Wrapper>
             <TopNav name="back" {...props}>
-              编辑分类
-              {/*{pathname.indexOf('create_tag')>=0?"新建分类":"编辑分类"}*/}
+              {id === '9999' ? '新建分类' : '编辑分类'}
             </TopNav>
             <InputTag>
-              <label>
-                <Icon name={tag.name}/>
-                {/*<input type="text" placeholder={tag.name === "create_tag"?"输入类别名称（不能超过4个字）":tag.name}/>*/}
-                <div>{tag.name}</div>
-              </label>
+              {id === '9999' ? <label>
+                        <Icon name="9999"/>
+                        <input type="text"
+                               placeholder="请输入分类类型(不超过四个字)"
+                               defaultValue=""
+                               ref ={inputRef}
+                               onBlur={onBlur}/>
+                      </label>
+                      : <label>
+                        <Icon name={(tag.id).toString()}/>
+                        <input type="text"
+                               placeholder={tag.name}
+                               defaultValue={tag.name}
+                               ref ={inputRef}
+                               onBlur={onBlur}/>
+                      </label>
+              }
             </InputTag>
           </Wrapper>
-  )
-}
+  );
+};
 
-export  {EditTag}
+export {EditTag};
+
+

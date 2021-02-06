@@ -22,13 +22,6 @@ const Wrapper = styled.section`
       height: 32px;
       fill:#a7e0d1;
     }
-    //>span{
-    //  position: absolute;
-    //  top: 3px;
-    //  right: 10px;
-    //  font-weight: 800;
-    //  font-size: 16px;
-    //}
   }
 `;
 
@@ -59,7 +52,6 @@ const NotesSection:React.FC<Props>=(props)=> {
                      ref ={inputRef}
                      onBlur={onBlur}
               />
-              {/*<span>123</span>*/}
             </label>
           </Wrapper>
   )

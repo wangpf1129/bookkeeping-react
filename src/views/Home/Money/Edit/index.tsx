@@ -82,7 +82,7 @@ const Edit:React.FC = (props: any) => {
                   return (
                           <li key={tag.id}>
                             <div className="tags">
-                              <Icon name={tag.name}/>
+                              <Icon name={(tag.id).toString()}/>
                               <span>{tag.name}</span>
                             </div>
                             <Link to={`${url}/${tag.id}`}>
@@ -94,7 +94,7 @@ const Edit:React.FC = (props: any) => {
             </ul>
             </TagsList>
             <AddTag>
-              <Link to={`${url}/create_tag`}>
+              <Link to={`${url}/9999`}>
               添加类别
               </Link>
             </AddTag>

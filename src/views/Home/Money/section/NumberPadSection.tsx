@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, {useState} from 'react';
 
-import generateOutput from './generateOutput';
+import generateOutput from 'common/generateOutput';
 
 const Wrapper = styled.section`
   position:relative;

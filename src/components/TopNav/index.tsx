@@ -23,13 +23,14 @@ const Title = styled.div`
   span{padding: 8px;}
 `;
 
+
 function TopNav(props: any) {
   const backOne = ()=>{
       props.history.go(-1)
   }
   return (
           <NavWrapper>
-            {props.name ? <div className="back-icon" onClick={backOne}><Icon name={props.name}/></div> : null}
+            {props.name && <div className="back-icon" onClick={backOne}><Icon name={props.name}/></div>}
             <Title>{props.children}</Title>
           </NavWrapper>
   );

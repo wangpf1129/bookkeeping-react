@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import TopNav from 'components/TopNav';
 import {Wrapper} from 'components/Wrapper';
 
-import {CategorySection} from './CategorySection';
-import {TagsSection} from './TagsSection';
-import {KeyboardSection} from './KeyboardSection';
+import {CategorySection} from './section/CategorySection';
+import {TagsSection} from './section/TagsSection';
+import {KeyboardSection} from './section/KeyboardSection';
 
 
 const Main = styled.div`
-   background-color:#fafbf6;
+  background-color:#fafbf6;
   flex: 1;
   overflow: auto;
 `;
@@ -38,13 +38,14 @@ function Money(props: any) {
               />
             </TopNav>
             <Main>
-              {selected.category}
-              <hr/>
-              {selected.tagIds.join('.')}
-              <hr/>
-              {selected.note}
-              <hr/>
-              {selected.amount}
+              {/*{selected.category}*/}
+              {/*<hr/>*/}
+              {/*{selected.tagIds.join('.')}*/}
+              {/*<hr/>*/}
+              {/*{selected.note}*/}
+              {/*<hr/>*/}
+              {/*{selected.amount}*/}
+
               <TagsSection value={selected.tagIds}
                            onChange={(tagIds)=>{onChange({tagIds})}}
               />
