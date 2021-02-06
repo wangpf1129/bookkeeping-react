@@ -36,7 +36,7 @@ const ShowMoney = styled.div`
 `;
 
 
-function Home() {
+const Home:React.FC =()=> {
   let {path, url} = useRouteMatch();
   return (
           <Layout name="TODAY">

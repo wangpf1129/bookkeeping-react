@@ -13,7 +13,10 @@ const Main = styled.div`
   overflow-y: auto;
 `
 
-function Layout(props:any) {
+type  Props ={
+  name:string
+}
+const Layout:React.FC<Props>=(props:any)=> {
   return (
           <Wrapper>
             <TopNav>{props.name}</TopNav>

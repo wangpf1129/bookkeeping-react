@@ -1,4 +1,5 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom'
 import styled from 'styled-components';
 import Icon from '../Icon';
 
@@ -23,10 +24,13 @@ const Title = styled.div`
   span{padding: 8px;}
 `;
 
-
-function TopNav(props: any) {
+type Props = {
+  name?:string
+}
+const TopNav:React.FC<Props>=(props)=> {
+  const history =useHistory()
   const backOne = ()=>{
-      props.history.go(-1)
+    history.goBack()
   }
   return (
           <NavWrapper>

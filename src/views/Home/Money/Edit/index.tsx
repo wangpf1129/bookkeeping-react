@@ -27,6 +27,7 @@ const TypeSection = styled.section`
 `
 const TagsList = styled.section`
   flex: 1;
+  overflow-y: auto;
   ul{
     display: flex;
     flex-direction: column;

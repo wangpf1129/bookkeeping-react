@@ -1,6 +1,6 @@
 import React from 'react';
 
-function NoMatch() {
+const NoMatch:React.FC=() =>{
   return (
           <div>
             <h3>

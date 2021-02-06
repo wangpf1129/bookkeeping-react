@@ -17,7 +17,7 @@ const Main = styled.div`
 
 type Category = "-" | "+"
 
-function Money(props: any) {
+const Money:React.FC =()=> {
   const [selected,setSelected] = useState({
     tagIds:[] as number[], // 标签
     note:"",  // 备注
@@ -32,7 +32,7 @@ function Money(props: any) {
   }
   return (
           <Wrapper>
-            <TopNav name="back" {...props}>
+            <TopNav name="back">
               <CategorySection value={selected.category}
                                onChange={(category)=>{onChange({category})}}
               />
