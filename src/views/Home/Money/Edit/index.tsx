@@ -85,7 +85,7 @@ const Edit:React.FC = (props: any) => {
                               <Icon name={tag.name}/>
                               <span>{tag.name}</span>
                             </div>
-                            <Link to={`${url}/${tag.name}`}>
+                            <Link to={`${url}/${tag.id}`}>
                               <Icon name="more"/>
                             </Link>
                           </li>);
@@ -99,8 +99,8 @@ const Edit:React.FC = (props: any) => {
               </Link>
             </AddTag>
             <Switch>
-              <Route path={`${path}/:tag`} component={EditTag}/>
-              <Route path={`${path}/:tag`} component={EditTag}/>
+              <Route path={`${path}/:id`} component={EditTag}/>
+              <Route path={`${path}/:id`} component={EditTag}/>
             </Switch>
           </Wrapper>
   );

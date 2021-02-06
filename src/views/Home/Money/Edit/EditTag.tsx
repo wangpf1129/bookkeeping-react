@@ -1,7 +1,10 @@
 import React from 'react';
+import {useParams} from 'react-router-dom'
 import {Wrapper} from 'components/Wrapper';
 import TopNav from 'components/TopNav';
 import Icon from 'components/Icon';
+
+import useTags from 'common/useTags';
 
 import styled from 'styled-components';
 
@@ -29,20 +32,25 @@ const InputTag= styled.section`
   }
   
 `
+
+type Params ={
+  id:string
+}
 const EditTag:React.FC = (props:any)=>{
-  console.log(props);
-  const {location:{pathname}} = props
-  const arr =pathname.split('/')
-  const tag = arr[arr.length-1]
+  const {findTag} = useTags()
+  const {id} =useParams<Params>()
+  const tag = findTag(parseInt(id))
   return (
           <Wrapper>
             <TopNav name="back" {...props}>
-              {pathname.indexOf('create_tag')>=0?"新建分类":"编辑分类"}
+              编辑分类
+              {/*{pathname.indexOf('create_tag')>=0?"新建分类":"编辑分类"}*/}
             </TopNav>
             <InputTag>
               <label>
-                <Icon name={tag}/>
-                <input type="text" placeholder={tag === "create_tag"?"输入类别名称（不能超过4个字）":tag}/>
+                <Icon name={tag.name}/>
+                {/*<input type="text" placeholder={tag.name === "create_tag"?"输入类别名称（不能超过4个字）":tag.name}/>*/}
+                <div>{tag.name}</div>
               </label>
             </InputTag>
           </Wrapper>
