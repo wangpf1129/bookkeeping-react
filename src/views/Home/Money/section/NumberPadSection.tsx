@@ -42,7 +42,7 @@ const Wrapper = styled.section`
 type  Props = {
   amount:number,
   onChangeAmount:(amount:number)=>void,
-  onOk ?: ()=>void
+  onSubmit ?: ()=>void
 }
 const NumberPadSection: React.FC<Props> = (props) => {
   const [output, _setOutput] = useState('0');
@@ -59,9 +59,9 @@ const NumberPadSection: React.FC<Props> = (props) => {
     const text = (e.target as HTMLBaseElement).textContent;
     if (text === null) return;
     if(text === '完成'){
-      if(props.onOk){
-        props.onOk();
-      }
+       if(props.onSubmit){
+         props.onSubmit();
+       }
     }
     setOutput(generateOutput(text,output))
   };

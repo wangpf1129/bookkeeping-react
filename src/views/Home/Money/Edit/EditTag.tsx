@@ -1,10 +1,10 @@
 import React, {useRef, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams,useHistory} from 'react-router-dom';
 import {Wrapper} from 'components/Wrapper';
 import TopNav from 'components/TopNav';
 import Icon from 'components/Icon';
 
-import useTags from 'common/useTags';
+import useTags from 'hooks/useTags';
 import {defaultIcon} from 'common/iconsLib';
 
 
@@ -82,31 +82,38 @@ type Params = {
 const EditTag: React.FC = (props: any) => {
 
   const [iconName,setIconName] =useState("9999")
-  // console.log(iconName);
   const {findTag,updateTag,deleteTag,addTag} = useTags();
+  const history =useHistory()
   const {id:idString} = useParams<Params>();
   const tag = findTag(parseInt(idString)) || "";
-  console.log(tag);
 
   const inputRef = useRef<HTMLInputElement>(null)
+
   const saveTag = ()=>{
-    if(inputRef.current !== null){
-      updateTag(tag.id,{name:inputRef.current.value.trim(),iconName})
+    if(inputRef.current !== null && inputRef.current.value !== "" && inputRef.current.value.trim().length <= 4){
+      let newIconName = iconName !== "9999"? iconName:tag.iconName
+      updateTag(tag.id,{name:inputRef.current.value.trim().substring(0,4),iconName:newIconName})
+      window.alert("修改成功")
+      history.goBack()
+    }else{
+      window.alert("不能输入空的标签以及输入的汉字不能超过四个！")
     }
   }
   const addNewTag =()=>{
-
-    if(inputRef.current !== null && inputRef.current.value !== ""){
-      // console.log(inputRef.current.value.trim(),iconName);
-      addTag(inputRef.current.value.trim(),iconName)
+    if(inputRef.current !== null && inputRef.current.value !== "" && inputRef.current.value.trim().length <= 4){
+      addTag(inputRef.current.value.trim().substring(0,4),iconName)
       window.alert("添加成功")
+      history.goBack()
     }else{
-      window.alert("不能输入空的标签")
+      window.alert("不能输入空的标签以及输入的汉字不能超过四个！")
     }
   }
+
   const deleteOneTag = ()=>{
     if(inputRef.current !== null){
       deleteTag(tag.id)
+      alert("删除成功")
+      history.goBack()
     }
   }
   const getIcon = (iconName:string) =>{
@@ -127,7 +134,7 @@ const EditTag: React.FC = (props: any) => {
                                ref ={inputRef}/>
                       </label>
                       : <label>
-                        <Icon name={iconName === "9999"? tag.iconName : iconName}/>
+                        <Icon name={ iconName === "9999" ? tag.iconName : iconName}/>
                         <input type="text"
                                placeholder={tag.name}
                                defaultValue={tag.name}

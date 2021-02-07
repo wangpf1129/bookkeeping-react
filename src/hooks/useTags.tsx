@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
-import {createId} from './createId';
-import {useUpdate} from '../hooks/useUpdate';
+import {createId} from 'common/createId';
+import {useUpdate} from './useUpdate';
 
 // const defaultTags =[
 //   // {id:createId(),name:"餐饮",iconName:"1"},  // 1
@@ -74,30 +74,24 @@ const useTags = ()=>{
 
   // 修改该标签
   const updateTag = (id:number,obj:{name:string,iconName:string})=>{
-    // const index = findIndex(id)
-    // // 深拷贝 tags 得到 tagsClone
-    // const tagsClone = JSON.parse(JSON.stringify(tags))
-    // tagsClone.splice(index,1,{id:id,name:obj.name})
-    // setTags(tagsClone)
     setTags(tags.map(tag=>tag.id === id ? {id,name:obj.name,iconName:obj.iconName}:tag))
+    window.location.reload()
   }
   // 删除该标签
   const deleteTag = (id:number)=>{
-    // const index = findIndex(id)
-    // // 深拷贝 tags 得到 tagsClone
-    // const tagsClone = JSON.parse(JSON.stringify(tags))
-    // tagsClone.splice(index,1)
-    // setTags(tagsClone)
     setTags(tags.filter(tag=>tag.id !== id))
+    window.location.reload()
   }
 
   // 添加该标签
   const addTag = (name:string,iconName:string)=>{
     if(name !== null && name !== ""){
       setTags([...tags,{id:createId(),name,iconName}])
+      window.location.reload()
     }
   }
-  console.log(tags);
+
+  // console.log(tags);
   return {tags,setTags,findTag,findIndex,updateTag,deleteTag,addTag}
 }
 

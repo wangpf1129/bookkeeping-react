@@ -4,7 +4,7 @@ import TopNav from 'components/TopNav';
 import {Wrapper} from 'components/Wrapper';
 import Icon from 'components/Icon';
 
-import useTags from 'common/useTags';
+import useTags from 'hooks/useTags';
 import {Link, Route, Switch, useRouteMatch} from 'react-router-dom';
 import {EditTag} from './EditTag';
 

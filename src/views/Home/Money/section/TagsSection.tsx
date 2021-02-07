@@ -3,7 +3,7 @@ import Icon from 'components/Icon';
 import React from 'react';
 import {Link, Route, Switch, useRouteMatch} from 'react-router-dom';
 import Edit from '../Edit';
-import useTags from 'common/useTags';
+import useTags from 'hooks/useTags';
 
 const Wrapper = styled.section`
    padding: 20px 38px;   

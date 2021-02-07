@@ -13,7 +13,7 @@ type  Props = {
   amount:number,
   onChangeNote:(note:string)=>void
   onChangeAmount:(amount:number)=>void
-  onOk ?: ()=>void
+  onSubmit ?: ()=>void
 }
 const KeyboardSection:React.FC<Props>=(props)=>{
   return (

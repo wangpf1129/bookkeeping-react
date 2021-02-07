@@ -7,6 +7,7 @@ import {Wrapper} from 'components/Wrapper';
 import {CategorySection} from './section/CategorySection';
 import {TagsSection} from './section/TagsSection';
 import {KeyboardSection} from './section/KeyboardSection';
+import {useRecords} from 'hooks/useRecords';
 
 
 const Main = styled.div`
@@ -16,20 +17,27 @@ const Main = styled.div`
 `;
 
 type Category = "-" | "+"
-
+const defaultFormData = {
+  tagIds:[] as number[], // 标签
+  note:"",  // 备注
+  category:"-" as Category, // 收入/支出
+  amount:0  // 总和
+}
 const Money:React.FC =()=> {
-  const [selected,setSelected] = useState({
-    tagIds:[] as number[], // 标签
-    note:"",  // 备注
-    category:"-" as Category, // 收入/支出
-    amount:0  // 总和
-  })
+  const [selected,setSelected] = useState(defaultFormData)
+  const {addRecord} =useRecords()
   const onChange = (obj:Partial<typeof selected>)=>{
     setSelected({
             ...selected,
             ...obj
     })
   }
+  const onSubmit = ()=>{
+    addRecord(selected);
+    window.alert("保存成功");
+    window.location.reload()
+  }
+
   return (
           <Wrapper>
             <TopNav name="back">
@@ -38,14 +46,8 @@ const Money:React.FC =()=> {
               />
             </TopNav>
             <Main>
-              {/*{selected.category}*/}
-              {/*<hr/>*/}
-              {/*{selected.tagIds.join('.')}*/}
-              {/*<hr/>*/}
-              {/*{selected.note}*/}
-              {/*<hr/>*/}
-              {/*{selected.amount}*/}
-
+              {JSON.stringify(selected)}
+              <hr/>
               <TagsSection value={selected.tagIds}
                            onChange={(tagIds)=>{onChange({tagIds})}}
               />
@@ -54,7 +56,7 @@ const Money:React.FC =()=> {
             <KeyboardSection note={selected.note} amount = {selected.amount}
                              onChangeNote={(note)=>{onChange({note})}}
                              onChangeAmount ={(amount)=>{onChange({amount})}}
-                             onOk={()=>{}}
+                             onSubmit={()=>{onSubmit()}}
             />
           </Wrapper>
   );
