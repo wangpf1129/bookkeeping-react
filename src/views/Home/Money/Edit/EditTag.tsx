@@ -82,15 +82,26 @@ type Params = {
 const EditTag: React.FC = (props: any) => {
 
   const [iconName,setIconName] =useState("9999")
-
-  const {findTag,updateTag,deleteTag} = useTags();
+  // console.log(iconName);
+  const {findTag,updateTag,deleteTag,addTag} = useTags();
   const {id:idString} = useParams<Params>();
-  const tag = findTag(parseInt(idString));
+  const tag = findTag(parseInt(idString)) || "";
+  console.log(tag);
 
   const inputRef = useRef<HTMLInputElement>(null)
   const saveTag = ()=>{
     if(inputRef.current !== null){
       updateTag(tag.id,{name:inputRef.current.value.trim(),iconName})
+    }
+  }
+  const addNewTag =()=>{
+
+    if(inputRef.current !== null && inputRef.current.value !== ""){
+      // console.log(inputRef.current.value.trim(),iconName);
+      addTag(inputRef.current.value.trim(),iconName)
+      window.alert("添加成功")
+    }else{
+      window.alert("不能输入空的标签")
     }
   }
   const deleteOneTag = ()=>{
@@ -116,7 +127,7 @@ const EditTag: React.FC = (props: any) => {
                                ref ={inputRef}/>
                       </label>
                       : <label>
-                        <Icon name={iconName === "9999" ? tag.iconName : iconName}/>
+                        <Icon name={iconName === "9999"? tag.iconName : iconName}/>
                         <input type="text"
                                placeholder={tag.name}
                                defaultValue={tag.name}
@@ -146,10 +157,16 @@ const EditTag: React.FC = (props: any) => {
                 }
               </ul>
             </IconList>
-            <Button>
-              <button className="save" onClick={saveTag}>保存标签</button>
-              {idString !== '9999' && <button className="delete" onClick={deleteOneTag}>删除标签</button>}
-            </Button>
+            {idString === '9999' ?
+                    <Button>
+                      <button className="save" onClick={addNewTag}>添加新标签</button>
+                    </Button>
+                    :
+                    <Button>
+                      <button className="save" onClick={saveTag}>保存标签</button>
+                      <button className="delete" onClick={deleteOneTag}>删除标签</button>
+                    </Button>
+            }
           </Wrapper>
   );
 };
