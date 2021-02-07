@@ -1,30 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import TopNav from 'components/TopNav';
 import {Wrapper} from 'components/Wrapper';
 import Icon from 'components/Icon';
+import {TypeSection} from 'components/TypeSection';
 
 import useTags from 'hooks/useTags';
 import {Link, Route, Switch, useRouteMatch} from 'react-router-dom';
 import {EditTag} from './EditTag';
 
-const TypeSection = styled.section`
-  margin-top: 12px;
-  margin-bottom: 22px;
-  display: flex;
-  justify-content: center;
-  span{
-    padding: 8px 24px;
-    font-size: 18px;
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-  .selected{
-    background-color:#9ccac0;
-    color: white;
-    border-radius: 4px;
-  }
-`
 const TagsList = styled.section`
   flex: 1;
   overflow-y: auto;
@@ -72,10 +56,7 @@ const Edit:React.FC = (props: any) => {
             <TopNav name="back" {...props}>
               分类管理
             </TopNav>
-            <TypeSection>
-              <span className="selected">收入</span>
-              <span>支出</span>
-            </TypeSection>
+            <TypeSection/>
             <TagsList>
             <ul>
               {
