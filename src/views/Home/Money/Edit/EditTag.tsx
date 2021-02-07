@@ -80,7 +80,6 @@ type Params = {
   id: string
 }
 const EditTag: React.FC = (props: any) => {
-
   const [iconName,setIconName] =useState("9999")
   const {findTag,updateTag,deleteTag,addTag} = useTags();
   const history =useHistory()
@@ -88,7 +87,7 @@ const EditTag: React.FC = (props: any) => {
   const tag = findTag(parseInt(idString)) || "";
 
   const inputRef = useRef<HTMLInputElement>(null)
-
+  // 修改标签
   const saveTag = ()=>{
     if(inputRef.current !== null && inputRef.current.value !== "" && inputRef.current.value.trim().length <= 4){
       let newIconName = iconName !== "9999"? iconName:tag.iconName
@@ -99,6 +98,7 @@ const EditTag: React.FC = (props: any) => {
       window.alert("不能输入空的标签以及输入的汉字不能超过四个！")
     }
   }
+  // 添加标签
   const addNewTag =()=>{
     if(inputRef.current !== null && inputRef.current.value !== "" && inputRef.current.value.trim().length <= 4){
       addTag(inputRef.current.value.trim().substring(0,4),iconName)
@@ -108,7 +108,7 @@ const EditTag: React.FC = (props: any) => {
       window.alert("不能输入空的标签以及输入的汉字不能超过四个！")
     }
   }
-
+  // 删除标签
   const deleteOneTag = ()=>{
     if(inputRef.current !== null){
       deleteTag(tag.id)
@@ -146,21 +146,9 @@ const EditTag: React.FC = (props: any) => {
               <ul>
                 {
                   defaultIcon.map((item)=>{
-                    return (
-                            <li key={item.id} onClick={()=>getIcon(item.iconName)}>
+                    return (<li key={item.id} onClick={()=>getIcon(item.iconName)}>
                               <Icon name={item.iconName}/>
-                            </li>
-                    )
-                  })
-                }
-                {
-                  defaultIcon.map((item)=>{
-                    return (
-                            <li key={item.id} onClick={()=>getIcon(item.iconName)}>
-                              <Icon name={item.iconName}/>
-                            </li>
-                    )
-                  })
+                            </li>)})
                 }
               </ul>
             </IconList>
