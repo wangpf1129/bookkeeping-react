@@ -33,9 +33,11 @@ const Money:React.FC =()=> {
     })
   }
   const onSubmit = ()=>{
-    addRecord(selected);
-    window.alert("保存成功");
-    window.location.reload()
+    if(addRecord(selected)){
+      addRecord(selected);
+      window.alert("保存成功");
+      window.location.reload()
+    }
   }
 
   return (
@@ -46,8 +48,6 @@ const Money:React.FC =()=> {
               />
             </TopNav>
             <Main>
-              {JSON.stringify(selected)}
-              <hr/>
               <TagsSection value={selected.tagIds}
                            onChange={(tagIds)=>{onChange({tagIds})}}
               />
