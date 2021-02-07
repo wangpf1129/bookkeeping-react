@@ -18,20 +18,21 @@ const Wrapper = styled.section`
     color: white;
     border-radius: 4px;
   }
-`
+`;
 
 
-const  TypeSection  = ()=>{
-  const [category,setCategory] = useState<"-"|"+">('-')
+const TypeSection = () => {
+  const [category, setCategory] = useState<'-' | '+'>('-');
   return (
-         <Wrapper>
-           {/*<span className="selected">收入</span>*/}
-           {/*<span>支出</span>*/}
-           <CategorySection value={category}
-                            onChange={value=>setCategory(value)}
-           />
-         </Wrapper>
- )
-}
+          <Wrapper>
+            {/*<span className="selected">收入</span>*/}
+            {/*<span>支出</span>*/}
+            <CategorySection value={category}
+                             onChange={value => setCategory(value)}
+            />
+          </Wrapper>
+  );
+};
 
-export {TypeSection}
+export {TypeSection};
+

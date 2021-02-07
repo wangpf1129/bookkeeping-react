@@ -16,50 +16,50 @@ const Main = styled.div`
   overflow: auto;
 `;
 
-type Category = "-" | "+"
+type Category = '-' | '+'
 const defaultFormData = {
-  tagIds:[] as number[], // 标签
-  note:"",  // 备注
-  category:"-" as Category, // 收入/支出
-  amount:0  // 总和
-}
-const Money:React.FC =()=> {
-  const [selected,setSelected] = useState(defaultFormData)
-  const {addRecord} =useRecords()
-  const onChange = (obj:Partial<typeof selected>)=>{
+  tagIds: [] as number[], // 标签
+  note: '',  // 备注
+  category: '-' as Category, // 收入/支出
+  amount: 0  // 总和
+};
+const Money: React.FC = () => {
+  const [selected, setSelected] = useState(defaultFormData);
+  const {addRecord} = useRecords();
+  const onChange = (obj: Partial<typeof selected>) => {
     setSelected({
-            ...selected,
-            ...obj
-    })
-  }
-  const onSubmit = ()=>{
-    if(addRecord(selected)){
+      ...selected,
+      ...obj
+    });
+  };
+  const onSubmit = () => {
+    if (addRecord(selected)) {
       addRecord(selected);
-      window.alert("保存成功");
-      window.location.reload()
+      window.alert('保存成功');
+      window.location.reload();
     }
-  }
+  };
 
   return (
           <Wrapper>
             <TopNav name="back">
               <CategorySection value={selected.category}
-                               onChange={(category)=>{onChange({category})}}
+                               onChange={(category) => {onChange({category});}}
               />
             </TopNav>
             <Main>
               <TagsSection value={selected.tagIds}
-                           onChange={(tagIds)=>{onChange({tagIds})}}
+                           onChange={(tagIds) => {onChange({tagIds});}}
               />
 
             </Main>
-            <KeyboardSection note={selected.note} amount = {selected.amount}
-                             onChangeNote={(note)=>{onChange({note})}}
-                             onChangeAmount ={(amount)=>{onChange({amount})}}
-                             onSubmit={()=>{onSubmit()}}
+            <KeyboardSection note={selected.note} amount={selected.amount}
+                             onChangeNote={(note) => {onChange({note});}}
+                             onChangeAmount={(amount) => {onChange({amount});}}
+                             onSubmit={() => {onSubmit();}}
             />
           </Wrapper>
   );
-}
+};
 
 export default Money;

@@ -10,7 +10,7 @@ const useUpdate = (fn: () => void,deps:any[]) => {
     if(count.current > 1){  // 不要第一次渲染， 因为第一次渲染是 空数组
       fn();
     }
-  },[deps,fn]);
+  },[fn,deps]);
 };
 
 export  {useUpdate}

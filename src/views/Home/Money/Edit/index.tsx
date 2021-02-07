@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import TopNav from 'components/TopNav';
 import {Wrapper} from 'components/Wrapper';
@@ -40,15 +40,15 @@ const TagsList = styled.section`
          height: 24px;
       }
   }
-`
+`;
 const AddTag = styled.section`
   text-align: center;
   background-color:#9ccac0;
   font-size: 22px;
   padding: 14px 0;
-`
+`;
 
-const Edit:React.FC = (props: any) => {
+const Edit: React.FC = (props: any) => {
   const {path, url} = useRouteMatch();
   const {tags} = useTags();
   return (
@@ -58,26 +58,26 @@ const Edit:React.FC = (props: any) => {
             </TopNav>
             <TypeSection/>
             <TagsList>
-            <ul>
-              {
-                tags.map((tag) => {
-                  return (
-                          <li key={tag.id}>
-                            <div className="tags">
-                              <Icon name={tag.iconName}/>
-                              <span>{tag.name}</span>
-                            </div>
-                            <Link to={`${url}/${tag.id}`}>
-                              <Icon name="more"/>
-                            </Link>
-                          </li>);
-                })
-              }
-            </ul>
+              <ul>
+                {
+                  tags.map((tag) => {
+                    return (
+                            <li key={tag.id}>
+                              <div className="tags">
+                                <Icon name={tag.iconName}/>
+                                <span>{tag.name}</span>
+                              </div>
+                              <Link to={`${url}/${tag.id}`}>
+                                <Icon name="more"/>
+                              </Link>
+                            </li>);
+                  })
+                }
+              </ul>
             </TagsList>
             <AddTag>
               <Link to={`${url}/9999`}>
-              添加类别
+                添加类别
               </Link>
             </AddTag>
             <Switch>
