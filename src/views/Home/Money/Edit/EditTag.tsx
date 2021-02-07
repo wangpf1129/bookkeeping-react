@@ -1,16 +1,17 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import {Wrapper} from 'components/Wrapper';
 import TopNav from 'components/TopNav';
 import Icon from 'components/Icon';
 
 import useTags from 'common/useTags';
+import {defaultIcon} from 'common/iconsLib';
+
 
 import styled from 'styled-components';
 
 
 const InputTag = styled.section`
-  flex: 1;
   padding: 12px 16px;
   > label{
     display: flex;
@@ -33,11 +34,29 @@ const InputTag = styled.section`
   }
   
 `;
+const IconList = styled.section`
+  flex: 1;
+  overflow-y: auto;
+  ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    li{
+      padding: 20px;
+      > .icon{
+        width: 38px;
+        height: 38px;
+      }
+    }
+  }
+`
 const Button = styled.section`
+padding-top: 20px;
  display: flex;
  justify-content: center;
  align-items: center;
- margin-bottom: 40px;
+ margin-bottom: 10px;
  > button{
     outline: none;
     font-size: 16px;
@@ -61,6 +80,9 @@ type Params = {
   id: string
 }
 const EditTag: React.FC = (props: any) => {
+
+  const [iconName,setIconName] =useState("9999")
+
   const {findTag,updateTag,deleteTag} = useTags();
   const {id:idString} = useParams<Params>();
   const tag = findTag(parseInt(idString));
@@ -68,16 +90,18 @@ const EditTag: React.FC = (props: any) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const saveTag = ()=>{
     if(inputRef.current !== null){
-      // console.log(inputRef.current.value.trim());
-      updateTag(tag.id,{name:inputRef.current.value.trim()})
+      updateTag(tag.id,{name:inputRef.current.value.trim(),iconName})
     }
   }
   const deleteOneTag = ()=>{
     if(inputRef.current !== null){
-      // console.log(inputRef.current.value.trim());
       deleteTag(tag.id)
     }
   }
+  const getIcon = (iconName:string) =>{
+    setIconName(iconName)
+  }
+
   return (
           <Wrapper>
             <TopNav name="back" {...props}>
@@ -85,14 +109,14 @@ const EditTag: React.FC = (props: any) => {
             </TopNav>
             <InputTag>
               {idString === '9999' ? <label>
-                        <Icon name="9999"/>
+                        <Icon name={iconName}/>
                         <input type="text"
                                placeholder="请输入分类类型(不超过四个字)"
                                defaultValue=""
                                ref ={inputRef}/>
                       </label>
                       : <label>
-                        <Icon name={(tag.id).toString()}/>
+                        <Icon name={iconName === "9999" ? tag.iconName : iconName}/>
                         <input type="text"
                                placeholder={tag.name}
                                defaultValue={tag.name}
@@ -100,6 +124,28 @@ const EditTag: React.FC = (props: any) => {
                       </label>
               }
             </InputTag>
+            <IconList>
+              <ul>
+                {
+                  defaultIcon.map((item)=>{
+                    return (
+                            <li key={item.id} onClick={()=>getIcon(item.iconName)}>
+                              <Icon name={item.iconName}/>
+                            </li>
+                    )
+                  })
+                }
+                {
+                  defaultIcon.map((item)=>{
+                    return (
+                            <li key={item.id} onClick={()=>getIcon(item.iconName)}>
+                              <Icon name={item.iconName}/>
+                            </li>
+                    )
+                  })
+                }
+              </ul>
+            </IconList>
             <Button>
               <button className="save" onClick={saveTag}>保存标签</button>
               {idString !== '9999' && <button className="delete" onClick={deleteOneTag}>删除标签</button>}

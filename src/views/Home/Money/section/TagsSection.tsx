@@ -3,7 +3,7 @@ import Icon from 'components/Icon';
 import React from 'react';
 import {Link, Route, Switch, useRouteMatch} from 'react-router-dom';
 import Edit from '../Edit';
-import useTags from '../../../../common/useTags';
+import useTags from 'common/useTags';
 
 const Wrapper = styled.section`
    padding: 20px 38px;   
@@ -12,6 +12,7 @@ const Wrapper = styled.section`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    align-items: center;
     margin-right: -24px;
     margin-left: -4px;
     >li{
@@ -59,12 +60,6 @@ const TagsSection: React.FC<Props> = (props) => {
     };
   };
 
-  const addTag = () => {
-    // const tagName = window.prompt("请输入你想要添加的标签")
-    // if(tagName !== null){
-    //   setTags([...tags,tagName])
-    // }
-  };
 
   return (
           <Wrapper>
@@ -73,11 +68,11 @@ const TagsSection: React.FC<Props> = (props) => {
                 return (
                         <li key={tag.id} onClick={toggleTag(tag.id)}
                             className={selectedTagIds.indexOf(tag.id) >= 0 ? 'selected' : ''}>
-                          <Icon name={(tag.id).toString()}/>
+                          <Icon name={tag.iconName}/>
                           <span>{tag.name}</span>
                         </li>);
               })}
-              <li onClick={addTag}>
+              <li>
                 <Icon name="set"/>
                 <span>
                 <Link to={`${url}/edit`}>设置</Link>

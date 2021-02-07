@@ -83,7 +83,7 @@ const Edit:React.FC = (props: any) => {
                   return (
                           <li key={tag.id}>
                             <div className="tags">
-                              <Icon name={(tag.id).toString()}/>
+                              <Icon name={tag.iconName}/>
                               <span>{tag.name}</span>
                             </div>
                             <Link to={`${url}/${tag.id}`}>
