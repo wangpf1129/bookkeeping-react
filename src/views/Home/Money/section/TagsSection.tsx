@@ -14,8 +14,8 @@ const Wrapper = styled.section`
     justify-content: flex-start;
     align-items: center;
     margin-right: -24px;
-    margin-left: -4px;
     >li{
+       width: 20%;
       background-color:#fff;
       border-radius: 10px;
       box-shadow: 2px 3px 4px #ddd;
@@ -24,6 +24,7 @@ const Wrapper = styled.section`
       margin-right: 12px;
       display:flex;
       flex-direction: column;
+      align-items: center;
       text-align: center;
       font-size: 12px;
       >span{padding-top: 5px}
