@@ -42,9 +42,9 @@ function Nav() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/statistics" activeClassName="selected">
-                  <Icon name="statistics"/>
-                  统计
+                <NavLink to="/detail" activeClassName="selected">
+                  <Icon name="detail"/>
+                  明细
                 </NavLink>
               </li>
               <li>

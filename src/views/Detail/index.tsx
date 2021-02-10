@@ -74,14 +74,13 @@ const Div = styled.div`
  font-size: 24px;
 `
 
-const Statistics: React.FC = () => {
+const Detail: React.FC = () => {
   const [category, setCategory] = useState<'-' | '+'>('-');
   const {records} = useRecords();
   const {getName, getIcon} = useTags();
 
   const hash: { [key: string]: RecordItem[] } = {};
   const selectedRecords = records.filter(r => r.category === category);
-
   selectedRecords.map(r => {
     const key = day(r.createdAt).format('YYYY-MM-DD');
     // const key = r.createdAt;
@@ -98,8 +97,9 @@ const Statistics: React.FC = () => {
     if (a[0] < b[0]) return 1;
     return 0;
   });
+
   return (
-          <Layout name="统计">
+          <Layout name="明细">
             <TypeSection>
               <CategorySection value={category}
                                onChange={value => setCategory(value)}
@@ -137,9 +137,7 @@ const Statistics: React.FC = () => {
                       );
                     })
             }
-
-
           </Layout>
   );
 };
-export default Statistics;
+export default Detail;

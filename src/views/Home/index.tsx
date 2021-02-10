@@ -3,7 +3,7 @@ import React from 'react';
 import {Link, Route, Switch, useRouteMatch} from 'react-router-dom';
 import Money from './Money';
 import styled from 'styled-components';
-import {useRecords} from '../../hooks/useRecords';
+import {useRecords} from 'hooks/useRecords';
 import day from 'dayjs';
 
 const MoneyLink = styled.div`

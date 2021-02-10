@@ -50,8 +50,13 @@ const useRecords = () => {
     const mouthExpenses =  expenses.filter(item => day(item.createdAt).format('MM') === today)
     return  mouthExpenses.map(item => item.amount)
   }
+
   return {records, addRecord,incomeMoney,expensesMoney};
 };
 
 export {useRecords};
+
+
+
+
 
