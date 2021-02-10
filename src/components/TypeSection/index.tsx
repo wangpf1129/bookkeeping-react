@@ -1,6 +1,7 @@
-import {CategorySection} from 'views/Home/Money/section/CategorySection';
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
+
+
 
 const Wrapper = styled.section`
   margin-top: 12px;
@@ -21,19 +22,13 @@ const Wrapper = styled.section`
   }
 `;
 
+const TypeSection:React.FC = (props:any)  => {
 
-const TypeSection = () => {
-  const [category, setCategory] = useState<'-' | '+'>('-');
   return (
-          <Wrapper>
-            {/*<span className="selected">收入</span>*/}
-            {/*<span>支出</span>*/}
-            <CategorySection value={category}
-                             onChange={value => setCategory(value)}
-            />
-          </Wrapper>
+            <Wrapper>
+              {props.children}
+            </Wrapper>
   );
 };
-
 export {TypeSection};
 

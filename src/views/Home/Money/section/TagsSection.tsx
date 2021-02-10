@@ -60,8 +60,7 @@ const TagsSection: React.FC<Props> = (props) => {
       }
     };
   };
-
-
+  console.log(tags);
   return (
           <Wrapper>
             <ol>

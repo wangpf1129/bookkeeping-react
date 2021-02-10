@@ -39,7 +39,6 @@ const Money: React.FC = () => {
       window.location.reload();
     }
   };
-
   return (
           <Wrapper>
             <TopNav name="back">
@@ -51,7 +50,6 @@ const Money: React.FC = () => {
               <TagsSection value={selected.tagIds}
                            onChange={(tagIds) => {onChange({tagIds});}}
               />
-
             </Main>
             <KeyboardSection note={selected.note} amount={selected.amount}
                              onChangeNote={(note) => {onChange({note});}}

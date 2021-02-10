@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import TopNav from 'components/TopNav';
 import {Wrapper} from 'components/Wrapper';
@@ -8,6 +8,7 @@ import {TypeSection} from 'components/TypeSection';
 import useTags from 'hooks/useTags';
 import {Link, Route, Switch, useRouteMatch} from 'react-router-dom';
 import {EditTag} from './EditTag';
+import {CategorySection} from '../section/CategorySection';
 
 const TagsList = styled.section`
   flex: 1;
@@ -51,12 +52,17 @@ const AddTag = styled.section`
 const Edit: React.FC = (props: any) => {
   const {path, url} = useRouteMatch();
   const {tags} = useTags();
+  const [category, setCategory] = useState<'-' | '+'>('-');
   return (
           <Wrapper>
             <TopNav name="back" {...props}>
               分类管理
             </TopNav>
-            <TypeSection/>
+            <TypeSection>
+                <CategorySection value={category}
+                                 onChange={value => setCategory(value)}
+                />
+            </TypeSection>
             <TagsList>
               <ul>
                 {
@@ -82,7 +88,7 @@ const Edit: React.FC = (props: any) => {
             </AddTag>
             <Switch>
               <Route path={`${path}/:id`} component={EditTag}/>
-              <Route path={`${path}/:id`} component={EditTag}/>
+              <Route path={`${path}/:id&mold`} component={EditTag}/>
             </Switch>
           </Wrapper>
   );

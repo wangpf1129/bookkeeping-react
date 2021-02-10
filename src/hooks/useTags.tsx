@@ -31,24 +31,37 @@ import {useUpdate} from './useUpdate';
 //
 // ]
 const useTags = ()=>{
-  const [tags,setTags] = useState<{id:number,name:string,iconName:string}[]>([])
+  const [tags,setTags] = useState<{id:number,name:string,iconName:string,mold:string}[]>([])
 
   useEffect(()=>{
    let localTags =  JSON.parse(window.localStorage.getItem('tags') || '[]')
     if(localTags.length === 0){
         localTags = [
-          {id:createId(),name:"餐饮",iconName:"1"},  // 1
-          {id:createId(),name:"娱乐",iconName:"2"},  // 2
-          {id:createId(),name:"日用",iconName:"3"},  // 3
-          {id:createId(),name:"通讯",iconName:"4"},  // 4
-          {id:createId(),name:"果蔬",iconName:"5"},  // 5
-          {id:createId(),name:"交通",iconName:"6"},  // 6
-          {id:createId(),name:"烟酒",iconName:"7"},  // 7
-          {id:createId(),name:"数码",iconName:"8"},  // 8
-          {id:createId(),name:"服饰",iconName:"9"},  // 9
-          {id:createId(),name:"宠物",iconName:"10"},  // 10
-          {id:createId(),name:"旅行",iconName:"11"},  // 11
-          {id:createId(),name:"美容",iconName:"12"},  // 12
+          {id:createId(),name:"餐饮",iconName:"1",mold:"-"},  // 1
+          {id:createId(),name:"娱乐",iconName:"2",mold:"-"},  // 2
+          {id:createId(),name:"日用",iconName:"3",mold:"-"},  // 3
+          {id:createId(),name:"通讯",iconName:"4",mold:"-"},  // 4
+          {id:createId(),name:"果蔬",iconName:"5",mold:"-"},  // 5
+          {id:createId(),name:"交通",iconName:"6",mold:"-"},  // 6
+          {id:createId(),name:"烟酒",iconName:"7",mold:"-"},  // 7
+          {id:createId(),name:"数码",iconName:"8",mold:"-"},  // 8
+          {id:createId(),name:"服饰",iconName:"9",mold:"-"},  // 9
+          {id:createId(),name:"宠物",iconName:"10",mold:"-"},  // 10
+          {id:createId(),name:"旅行",iconName:"11",mold:"-"},  // 11
+          {id:createId(),name:"美容",iconName:"12",mold:"-"},  // 12
+          {id:createId(),name:"社交",iconName:"13",mold:"-"},  // 13,
+          {id:createId(),name:"汽车",iconName:"14",mold:"-"},  // 14
+          {id:createId(),name:"住房",iconName:"15",mold:"-"},  // 15
+          {id:createId(),name:"书籍",iconName:"16",mold:"-"},  // 16
+          {id:createId(),name:"长辈",iconName:"17",mold:"-"},  // 17
+          {id:createId(),name:"彩票",iconName:"18",mold:"-"},  // 18
+          {id:createId(),name:"学习",iconName:"19",mold:"-"},  // 19
+          {id:createId(),name:"办公",iconName:"20",mold:"-"},  // 20
+          {id:createId(),name:"礼物",iconName:"21",mold:"-"},  // 21
+          {id:createId(),name:"运动",iconName:"22",mold:"-"},  // 22
+          {id:createId(),name:"零食",iconName:"23",mold:"-"},  // 23
+          {id:createId(),name:"维修",iconName:"24",mold:"-"},  // 24
+          {id:createId(),name:"医疗",iconName:"25",mold:"-"},  // 25
         ]
     }
     setTags(localTags)
@@ -73,8 +86,8 @@ const useTags = ()=>{
   }
 
   // 修改该标签
-  const updateTag = (id:number,obj:{name:string,iconName:string})=>{
-    setTags(tags.map(tag=>tag.id === id ? {id,name:obj.name,iconName:obj.iconName}:tag))
+  const updateTag = (id:number,obj:{name:string,iconName:string},mold:string)=>{
+    setTags(tags.map(tag=>tag.id === id ? {id,name:obj.name,iconName:obj.iconName,mold}:tag))
     window.location.reload()
   }
   // 删除该标签
@@ -84,9 +97,9 @@ const useTags = ()=>{
   }
 
   // 添加该标签
-  const addTag = (name:string,iconName:string)=>{
+  const addTag = (name:string,iconName:string,mold:string)=>{
     if(name !== null && name !== ""){
-      setTags([...tags,{id:createId(),name,iconName}])
+      setTags([...tags,{id:createId(),name,iconName,mold}])
       window.location.reload()
     }
   }

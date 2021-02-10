@@ -16,7 +16,7 @@ const Main = styled.div`
 type  Props ={
   name:string
 }
-const Layout:React.FC<Props>=(props:any)=> {
+const Layout:React.FC<Props> = (props:any)=> {
   return (
           <Wrapper>
             <TopNav>{props.name}</TopNav>
