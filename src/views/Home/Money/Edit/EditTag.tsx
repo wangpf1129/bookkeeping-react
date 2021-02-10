@@ -103,7 +103,6 @@ const EditTag: React.FC = (props: any) => {
       window.alert('不能输入空的标签以及输入的汉字不能超过四个！');
     }
   };
-  console.log(category);
 
   // 添加标签
   const addNewTag = () => {

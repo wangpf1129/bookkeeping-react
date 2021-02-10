@@ -3,7 +3,8 @@ import React from 'react';
 import {Link, Route, Switch, useRouteMatch} from 'react-router-dom';
 import Money from './Money';
 import styled from 'styled-components';
-
+import {useRecords} from '../../hooks/useRecords';
+import day from 'dayjs';
 
 const MoneyLink = styled.div`
  margin: 28px auto 0;
@@ -30,20 +31,30 @@ const ShowMoney = styled.div`
     color: #81B7AA;
   }
   .income{
+    margin-top: 15px;
     color: #B7B7B7;
     font-size: 16px;
   }
 `;
 
 
-const Home:React.FC =()=> {
+const Home: React.FC = () => {
   let {path, url} = useRouteMatch();
+  const {incomeMoney, expensesMoney} = useRecords();
+  const today = day(new Date()).format('DD');
+  const mouth = day(new Date()).format('MM');
+  const income = incomeMoney(today);
+  const expenses = expensesMoney(mouth);
   return (
           <Layout name="TODAY">
             <ShowMoney>
               <span className="title">今日支出</span>
-              <span className="pay">￥ 18</span>
-              <span className="income">收入 ￥0</span>
+              <span className="pay">￥{income.reduce((preMoney, amount) => {
+                return preMoney += amount;
+              }, 0)}</span>
+              <span className="income">本月收入 ￥{expenses.reduce((preMoney, amount) => {
+                return preMoney += amount;
+              }, 0)}</span>
             </ShowMoney>
             <MoneyLink>
               <Link to={`${url}/money`}>记一笔</Link>
@@ -53,6 +64,6 @@ const Home:React.FC =()=> {
             </Switch>
           </Layout>
   );
-}
+};
 
 export default Home;

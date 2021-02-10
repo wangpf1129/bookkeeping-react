@@ -54,7 +54,6 @@ const Edit: React.FC = (props: any) => {
   const {tags} = useTags();
   const [category, setCategory] = useState<'-' | '+'>('-');
   const moldTags = tags.filter(tag=> tag.mold === category)
-  console.log(moldTags);
   return (
           <Wrapper>
             <TopNav name="back" {...props}>

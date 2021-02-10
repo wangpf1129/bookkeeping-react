@@ -1,5 +1,5 @@
 import Layout from 'components/Layout';
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import {RecordItem, useRecords} from 'hooks/useRecords';
 import useTags from 'hooks/useTags';
 import day from 'dayjs';
@@ -67,6 +67,12 @@ const RecordItems = styled.div`
   }
   
 `;
+const Div = styled.div`
+ margin-top: 130px;
+ padding: 20px;
+ text-align: center;
+ font-size: 24px;
+`
 
 const Statistics: React.FC = () => {
   const [category, setCategory] = useState<'-' | '+'>('-');
@@ -83,7 +89,7 @@ const Statistics: React.FC = () => {
       hash[key] = [];
     }
     hash[key].push(r);
-    return hash
+    return hash;
   });
   // 把对象变为数组
   const array = Object.entries(hash).sort((a, b) => {
@@ -92,7 +98,6 @@ const Statistics: React.FC = () => {
     if (a[0] < b[0]) return 1;
     return 0;
   });
-
   return (
           <Layout name="统计">
             <TypeSection>
@@ -100,35 +105,38 @@ const Statistics: React.FC = () => {
                                onChange={value => setCategory(value)}
               />
             </TypeSection>
-            {array.map(([date, records],index) => {
-              return (
-                      <div key={index}>
-                        <DateDiv>{date}</DateDiv>
-                        <RecordList>
-                          {records.map((item, index) => {
-                            return (
-                                    <RecordItems key={index}>
-                                      <div className="left">
-                                        {item.tagIds.map(tagId => <span key={tagId}>
+            {array.length === 0 ?
+                    <Div>去记一笔账吧~</Div>
+                    : array.map(([date, records], index) => {
+                      return (
+                              <div key={index}>
+                                <DateDiv>{date}</DateDiv>
+                                <RecordList>
+                                  {records.map((item, index) => {
+                                    return (
+                                            <RecordItems key={index}>
+                                              <div className="left">
+                                                {item.tagIds.map(tagId => <span key={tagId}>
                                 <Icon name={getIcon(tagId)}/>
                               </span>)}
-                                      </div>
-                                      <div className="center">
-                                        {item.tagIds.map(tagId => <span key={tagId}
-                                                                        className="nameSpan">{getName(tagId)}</span>)}
-                                        <span className="noteSpan">{item.note || '无备注'}</span>
-                                      </div>
-                                      <div className="right">
-                                        <span className="amountSpan">￥{item.amount}</span>
-                                        <span className="dateSpan">{day(item.createdAt).format('HH:mm')}</span>
-                                      </div>
-                                    </RecordItems>
-                            );
-                          })}
-                        </RecordList>
-                      </div>
-              );
-            })}
+                                              </div>
+                                              <div className="center">
+                                                {item.tagIds.map(tagId => <span key={tagId}
+                                                                                className="nameSpan">{getName(tagId)}</span>)}
+                                                <span className="noteSpan">{item.note || '无备注'}</span>
+                                              </div>
+                                              <div className="right">
+                                                <span className="amountSpan">￥{item.amount}</span>
+                                                <span className="dateSpan">{day(item.createdAt).format('HH:mm')}</span>
+                                              </div>
+                                            </RecordItems>
+                                    );
+                                  })}
+                                </RecordList>
+                              </div>
+                      );
+                    })
+            }
 
 
           </Layout>
