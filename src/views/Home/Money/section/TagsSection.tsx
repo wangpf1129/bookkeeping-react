@@ -43,12 +43,14 @@ const Wrapper = styled.section`
 
 type Props = {
   value: number[],
+  molds:string
   onChange: (value: number[]) => void
 }
 const TagsSection: React.FC<Props> = (props) => {
   let {path, url} = useRouteMatch();
   const {tags} = useTags();
   const selectedTagIds = props.value;
+  const selectedMolds = props.molds
   const toggleTag = (tagId: number) => {
     return () => {
       const index = selectedTagIds.indexOf(tagId);
@@ -60,11 +62,11 @@ const TagsSection: React.FC<Props> = (props) => {
       }
     };
   };
-  console.log(tags);
+  const moldTags = tags.filter(tag=> tag.mold === selectedMolds)
   return (
           <Wrapper>
             <ol>
-              {tags.map((tag) => {
+              {moldTags.map((tag) => {
                 return (
                         <li key={tag.id} onClick={toggleTag(tag.id)}
                             className={selectedTagIds.indexOf(tag.id) >= 0 ? 'selected' : ''}>

@@ -61,7 +61,12 @@ const useTags = ()=>{
           {id:createId(),name:"运动",iconName:"22",mold:"-"},  // 22
           {id:createId(),name:"零食",iconName:"23",mold:"-"},  // 23
           {id:createId(),name:"维修",iconName:"24",mold:"-"},  // 24
-          {id:createId(),name:"医疗",iconName:"25",mold:"-"},  // 25
+          {id:createId(),name:"工资",iconName:"001",mold:"+"},  // 25
+          {id:createId(),name:"兼职",iconName:"002",mold:"+"},  // 25
+          {id:createId(),name:"理财",iconName:"003",mold:"+"},  // 25
+          {id:createId(),name:"礼金",iconName:"004",mold:"+"},  // 25
+          {id:createId(),name:"其他",iconName:"005",mold:"+"},  // 25
+
         ]
     }
     setTags(localTags)

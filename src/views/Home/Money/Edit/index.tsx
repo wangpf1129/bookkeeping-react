@@ -53,6 +53,8 @@ const Edit: React.FC = (props: any) => {
   const {path, url} = useRouteMatch();
   const {tags} = useTags();
   const [category, setCategory] = useState<'-' | '+'>('-');
+  const moldTags = tags.filter(tag=> tag.mold === category)
+  console.log(moldTags);
   return (
           <Wrapper>
             <TopNav name="back" {...props}>
@@ -66,7 +68,7 @@ const Edit: React.FC = (props: any) => {
             <TagsList>
               <ul>
                 {
-                  tags.map((tag) => {
+                  moldTags.map((tag) => {
                     return (
                             <li key={tag.id}>
                               <div className="tags">

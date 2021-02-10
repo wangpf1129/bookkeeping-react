@@ -24,6 +24,9 @@ const defaultIcon = [
         {id:22,iconName:"22"},
         {id:23,iconName:"23"},
         {id:24,iconName:"24"},
+        {id:24,iconName:"24"},
+
+
 
 ]
 

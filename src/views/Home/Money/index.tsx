@@ -48,6 +48,7 @@ const Money: React.FC = () => {
             </TopNav>
             <Main>
               <TagsSection value={selected.tagIds}
+                           molds={selected.category}
                            onChange={(tagIds) => {onChange({tagIds});}}
               />
             </Main>
