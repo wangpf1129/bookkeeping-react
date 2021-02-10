@@ -15,6 +15,7 @@ const Wrapper = styled.section`
   }
   .selected{
     background-color:#9ccac0;
+    border: none;
     color: white;
     border-radius: 4px;
   }

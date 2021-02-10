@@ -7,7 +7,7 @@ const Wrapper = styled.section`
   >span{margin-left: 8px}
   .selected{
     border-bottom: 2px solid #000;
-  }
+  } 
 `;
 type  Props = {
   value: '-' | '+',

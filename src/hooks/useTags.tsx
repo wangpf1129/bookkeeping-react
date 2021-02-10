@@ -91,8 +91,18 @@ const useTags = ()=>{
     }
   }
 
+  // 获取该标签的名字
+  const getName = (id:number)=>{
+    const tag = tags.filter(tag => tag.id === id)[0]
+    return tag ? tag.name : ""
+  }
+  // 获取该标签的图标
+  const getIcon = (id:number)=>{
+    const tag = tags.filter(tag => tag.id === id)[0]
+    return tag ? tag.iconName : "9999"
+  }
   // console.log(tags);
-  return {tags,setTags,findTag,findIndex,updateTag,deleteTag,addTag}
+  return {tags,setTags,findTag,findIndex,updateTag,deleteTag,addTag,getName,getIcon}
 }
 
 export default useTags
