@@ -7,6 +7,7 @@ import {ShowMoney} from 'components/ShowMnoey';
 
 const ExpensesChart = () => {
   const [option] = useState({
+    title: {text: '哈哈哈'},
     tooltip: {
       trigger: 'item',
       formatter: '{b} : {d}%'
@@ -14,7 +15,7 @@ const ExpensesChart = () => {
     series: [
       {
         type: 'pie',
-        radius: ['25%','50%'],
+        radius: ['25%', '50%'],
         center: ['50%', '60%'],
         data: [
           {
@@ -23,19 +24,19 @@ const ExpensesChart = () => {
           },
           {
             value: 310, name: '娱乐',
-            itemStyle: {color: '#f5da6e'},label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
+            itemStyle: {color: '#f5da6e'}, label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
           },
           {
             value: 234, name: '日用',
-            itemStyle: {color: '#efefef'},label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
+            itemStyle: {color: '#efefef'}, label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
           },
           {
             value: 135, name: '果蔬',
-            itemStyle: {color: '#fe6d6d'},label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
+            itemStyle: {color: '#fe6d6d'}, label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
           },
           {
             value: 1548, name: '交通',
-            itemStyle: {color: '#e4e7f8'},label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
+            itemStyle: {color: '#e4e7f8'}, label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
           }
         ],
         emphasis: {
@@ -49,13 +50,14 @@ const ExpensesChart = () => {
     ]
   });
   const {incomeAll} = useRecords();
+
   return (
           <WrapperChart>
             <ShowMoney>
+              <Chart option={option}/>
               <span className="title">共支出</span>
               <span className="pay">￥{incomeAll}</span>
             </ShowMoney>
-            <Chart option={option}/>
           </WrapperChart>
   );
 };
