@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import Icon from 'components/Icon';
 import {TypeSection} from 'components/TypeSection';
 import {CategorySection} from '../Home/Money/section/CategorySection';
+import {MoneyLink} from 'components/MoneyLink/MoneyLink';
 
 const DateDiv = styled.div`
   font-size: 16px;
@@ -67,14 +68,19 @@ const RecordItems = styled.div`
   }
   
 `;
-const Div = styled.div`
- margin-top: 130px;
+const IconDiv = styled.div`
+ .icon{
+  width: 148px;
+  height: 148px;
+ }
+ margin-top: 80px;
  padding: 20px;
  text-align: center;
- font-size: 24px;
-`
+ font-size: 24px; 
+`;
 
 const Detail: React.FC = () => {
+
   const [category, setCategory] = useState<'-' | '+'>('-');
   const {records} = useRecords();
   const {getName, getIcon} = useTags();
@@ -106,7 +112,10 @@ const Detail: React.FC = () => {
               />
             </TypeSection>
             {array.length === 0 ?
-                    <Div>去记一笔账吧~</Div>
+                    <IconDiv>
+                      <Icon name="none"/>
+                      <MoneyLink />
+                    </IconDiv>
                     : array.map(([date, records], index) => {
                       return (
                               <div key={index}>
@@ -121,13 +130,15 @@ const Detail: React.FC = () => {
                               </span>)}
                                               </div>
                                               <div className="center">
-                                                {item.tagIds.map(tagId => <span key={tagId}
-                                                                                className="nameSpan">{getName(tagId)}</span>)}
+                                                {item.tagIds.map(tagId =>
+                                                        <span key={tagId} className="nameSpan">{getName(tagId)}</span>)}
                                                 <span className="noteSpan">{item.note || '无备注'}</span>
                                               </div>
                                               <div className="right">
                                                 <span className="amountSpan">￥{item.amount}</span>
-                                                <span className="dateSpan">{day(item.createdAt).format('HH:mm')}</span>
+                                                <span className="dateSpan">
+                                                  {day(item.createdAt).format('HH:mm')}
+                                                </span>
                                               </div>
                                             </RecordItems>
                                     );

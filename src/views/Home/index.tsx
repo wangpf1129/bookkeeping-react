@@ -1,21 +1,10 @@
-import Layout from 'components/Layout';
 import React from 'react';
-import {Link, Route, Switch, useRouteMatch} from 'react-router-dom';
-import Money from './Money';
+import Layout from 'components/Layout';
+import {MoneyLink} from 'components/MoneyLink/MoneyLink';
 import styled from 'styled-components';
 import {useRecords} from 'hooks/useRecords';
 import day from 'dayjs';
 
-const MoneyLink = styled.div`
- margin: 28px auto 0;
- background-color:#A1DECF;
- font-size: 18px;
- font-weight: 700;
- border-radius: 10px;
- padding: 14px;
- max-width: 141px;
- text-align: center;
-`;
 const ShowMoney = styled.div`
   margin-top: 94px; 
   display:flex;
@@ -39,7 +28,6 @@ const ShowMoney = styled.div`
 
 
 const Home: React.FC = () => {
-  let {path, url} = useRouteMatch();
   const {incomeMoney, expensesMoney} = useRecords();
   const today = day(new Date()).format('DD');
   const mouth = day(new Date()).format('MM');
@@ -56,12 +44,7 @@ const Home: React.FC = () => {
                 return preMoney += amount;
               }, 0)}</span>
             </ShowMoney>
-            <MoneyLink>
-              <Link to={`${url}/money`}>记一笔</Link>
-            </MoneyLink>
-            <Switch>
-              <Route path={`${path}/:money`} component={Money}/>
-            </Switch>
+            <MoneyLink/>
           </Layout>
   );
 };
