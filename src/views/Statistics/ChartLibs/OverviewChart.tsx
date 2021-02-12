@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import {Chart} from 'components/Chart/Chart';
-import styled from 'styled-components';
+import {WrapperChart} from 'components/WrapperChart';
 
-const Wrapper = styled.section`
-`
+
 const OverviewChart = ()=>{
   const [option] = useState({
     title: {
@@ -75,9 +74,10 @@ const OverviewChart = ()=>{
   });
 
   return (
-          <Wrapper>
+          <WrapperChart>
+
             <Chart option={option}/>
-          </Wrapper>
+          </WrapperChart>
   )
 }
 

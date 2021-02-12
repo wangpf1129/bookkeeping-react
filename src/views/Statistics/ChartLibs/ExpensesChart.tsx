@@ -1,35 +1,42 @@
 import React, {useState} from 'react';
 import {Chart} from 'components/Chart/Chart';
+import {WrapperChart} from 'components/WrapperChart';
+import {useRecords} from 'hooks/useRecords';
+import {ShowMoney} from 'components/ShowMnoey';
 
 
 const ExpensesChart = () => {
   const [option] = useState({
-    title: {
-      text: '某站点用户访问来源',
-      subtext: '纯属虚构',
-      left: 'center'
-    },
     tooltip: {
       trigger: 'item',
-      formatter: '{a} <br/>{b} : {c} ({d}%)'
-    },
-    legend: {
-      orient: 'vertical',
-      left: 'left',
-      data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+      formatter: '{b} : {d}%'
     },
     series: [
       {
-        name: '访问来源',
         type: 'pie',
-        radius: '55%',
+        radius: ['25%','50%'],
         center: ['50%', '60%'],
         data: [
-          {value: 335, name: '直接访问'},
-          {value: 310, name: '邮件营销'},
-          {value: 234, name: '联盟广告'},
-          {value: 135, name: '视频广告'},
-          {value: 1548, name: '搜索引擎'}
+          {
+            value: 335, name: '餐饮',
+            itemStyle: {color: '#ec654f'}, label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
+          },
+          {
+            value: 310, name: '娱乐',
+            itemStyle: {color: '#f5da6e'},label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
+          },
+          {
+            value: 234, name: '日用',
+            itemStyle: {color: '#efefef'},label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
+          },
+          {
+            value: 135, name: '果蔬',
+            itemStyle: {color: '#fe6d6d'},label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
+          },
+          {
+            value: 1548, name: '交通',
+            itemStyle: {color: '#e4e7f8'},label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
+          }
         ],
         emphasis: {
           itemStyle: {
@@ -41,8 +48,15 @@ const ExpensesChart = () => {
       }
     ]
   });
+  const {incomeAll} = useRecords();
   return (
-          <Chart option={option}/>
+          <WrapperChart>
+            <ShowMoney>
+              <span className="title">共支出</span>
+              <span className="pay">￥{incomeAll}</span>
+            </ShowMoney>
+            <Chart option={option}/>
+          </WrapperChart>
   );
 };
 

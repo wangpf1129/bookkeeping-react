@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropsWithChildren} from 'react';
 import styled from 'styled-components';
 
 
@@ -22,7 +22,7 @@ const Wrapper = styled.section`
   }
 `;
 
-const TypeSection:React.FC = (props:any)  => {
+const TypeSection:React.FC = (props:PropsWithChildren<any>)  => {
 
   return (
             <Wrapper>

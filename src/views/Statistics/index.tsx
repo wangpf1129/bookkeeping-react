@@ -21,7 +21,7 @@ const Wrapper = styled.section`
         color: #fff;
       }
     }
-  }
+  } 
 `;
 const Statistics: React.FC = () => {
   let {path, url} = useRouteMatch();
@@ -37,10 +37,10 @@ const Statistics: React.FC = () => {
                   <Link to={`${url}/overview`}>概览</Link>
                 </li>
                 <li className={text === '支出' ? 'selected' : ''} onClick={()=>{onclick('支出')}}>
-                  <Link to={`${url}/expenses`}>支出</Link>
+                  <Link to={`${url}/expenses`}>支出分析</Link>
                 </li>
                 <li className={text === '收入' ? 'selected' : ''} onClick={()=>{onclick('收入')}}>
-                  <Link to={`${url}/income`}>收入</Link>
+                  <Link to={`${url}/income`}>收入分析</Link>
                 </li>
               </ul>
             </Wrapper>

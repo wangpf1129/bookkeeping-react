@@ -43,6 +43,11 @@ const useRecords = () => {
    const todayIncome = income.filter(item => day(item.createdAt).format('DD') === today)
     return  todayIncome.map(item => item.amount)
   }
+  // 获取总支出
+  const incomeAll = income.map(item=>item.amount).reduce((preMoney, amount) => {
+      return preMoney += amount;
+    }, 0)
+
   // 获取 收入的标签
   const expenses = records.filter(item => item.category === '+');
   // 获取 本月收入的金额
@@ -50,8 +55,12 @@ const useRecords = () => {
     const mouthExpenses =  expenses.filter(item => day(item.createdAt).format('MM') === today)
     return  mouthExpenses.map(item => item.amount)
   }
+  // 获取总收入
+  const expensesALL = expenses.map(item=>item.amount).reduce((preMoney, amount) => {
+    return preMoney += amount;
+  }, 0)
 
-  return {records, addRecord,incomeMoney,expensesMoney};
+  return {records, addRecord,incomeMoney,expensesMoney,incomeAll,expensesALL};
 };
 
 export {useRecords};
