@@ -112,10 +112,7 @@ const Detail: React.FC = () => {
               />
             </TypeSection>
             {array.length === 0 ?
-                    <IconDiv>
-                      <Icon name="none"/>
-                      <MoneyLink />
-                    </IconDiv>
+                    <IconDiv><Icon name="none"/><MoneyLink/></IconDiv>
                     : array.map(([date, records], index) => {
                       return (
                               <div key={index}>
@@ -126,8 +123,8 @@ const Detail: React.FC = () => {
                                             <RecordItems key={index}>
                                               <div className="left">
                                                 {item.tagIds.map(tagId => <span key={tagId}>
-                                <Icon name={getIcon(tagId)}/>
-                              </span>)}
+                                                  <Icon name={getIcon(tagId)}/>
+                                                </span>)}
                                               </div>
                                               <div className="center">
                                                 {item.tagIds.map(tagId =>
