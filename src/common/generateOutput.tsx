@@ -47,6 +47,8 @@ const generateOutput = (text: string, output: string) => {
       } else {
         return output.slice(0, -1) || '';
       }
+    case '清零':
+      return '';
     case '=':
       return computeResult(output) + '';
     case '完成':

@@ -10,9 +10,11 @@ const Wrapper = styled.section`
 
 type  Props = {
   note:string,
+  createdAt:string
   amount:number,
   onChangeNote:(note:string)=>void
   onChangeAmount:(amount:number)=>void
+  onChangeDate:(createdAt:string)=>void
   onSubmit ?: ()=>void
 }
 const KeyboardSection:React.FC<Props>=(props)=>{

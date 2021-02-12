@@ -20,6 +20,7 @@ type Category = '-' | '+'
 const defaultFormData = {
   tagIds: [] as number[], // 标签
   note: '',  // 备注
+  createdAt: new Date().toISOString(), //日期
   category: '-' as Category, // 收入/支出
   amount: 0  // 总和
 };
@@ -53,7 +54,9 @@ const Money: React.FC = () => {
               />
             </Main>
             <KeyboardSection note={selected.note} amount={selected.amount}
+                             createdAt={selected.createdAt}
                              onChangeNote={(note) => {onChange({note});}}
+                             onChangeDate={(createdAt) => {onChange({createdAt});}}
                              onChangeAmount={(amount) => {onChange({amount});}}
                              onSubmit={() => {onSubmit();}}
             />

@@ -8,7 +8,7 @@ const Wrapper = styled.section`
   padding: 10px 20px;
   .money{
     position: absolute;
-    top: -48px;
+    top: -96px;
     right: 32px;
     font-weight: 800;
     font-size: 16px;
@@ -73,7 +73,7 @@ const NumberPadSection: React.FC<Props> = (props) => {
               <button>1</button>
               <button>2</button>
               <button>3</button>
-              <button className="today">今日</button>
+              <button className="today">清零</button>
               <button>4</button>
               <button>5</button>
               <button>6</button>

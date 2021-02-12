@@ -8,7 +8,7 @@ export type RecordItem = {
   amount: number
   createdAt: string
 }
-type newRecordItem = Omit<RecordItem, 'createdAt'> // 我不要 RecordItem 的 createdAt ，其他都要
+// type newRecordItem = Omit<RecordItem, 'createdAt'> // 我不要 RecordItem 的 createdAt ，其他都要
 
 const useRecords = () => {
   const [records, setRecords] = useState<RecordItem[]>([]);
@@ -22,7 +22,7 @@ const useRecords = () => {
   }, records);
 
   // 添加
-  const addRecord = (newRecord: newRecordItem) => {
+  const addRecord = (newRecord: RecordItem) => {
     if (newRecord.tagIds.length === 0) {
       alert('请输入标签！');
       return false;
@@ -31,8 +31,8 @@ const useRecords = () => {
       alert('请输入金额！');
       return false;
     }
-    const record = {...newRecord, createdAt: (new Date()).toISOString()};
-    setRecords([...records, record]);
+    // const record = {...newRecord, createdAt: (new Date()).toISOString()};
+    setRecords([...records, newRecord]);
     return true;
   };
 
