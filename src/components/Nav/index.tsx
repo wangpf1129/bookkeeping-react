@@ -48,9 +48,9 @@ function Nav() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/assets" activeClassName="selected">
-                  <Icon name="assets"/>
-                  资产
+                <NavLink to="/statistics" activeClassName="selected">
+                  <Icon name="statistics"/>
+                  统计
                 </NavLink>
               </li>
             </ul>

@@ -5,9 +5,9 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import Assets from 'views/Assets';
 import Home from 'views/Home';
 import Detail from 'views/Detail';
+import Statistics from 'views/Statistics';
 import NoMatch from 'views/NoMatch';
 
 
@@ -17,7 +17,7 @@ import NoMatch from 'views/NoMatch';
               <Switch>
                 <Route path="/home" component={Home}/>
                 <Route path="/detail" component={Detail}/>
-                <Route path="/assets" component={Assets}/>
+                <Route path="/statistics" component={Statistics}/>
                 <Redirect exact from="/" to="/home"/>
                 <Route path="*" component={NoMatch}/>
               </Switch>
