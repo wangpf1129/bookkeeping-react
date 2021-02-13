@@ -6,6 +6,7 @@ const  Chart = (props:any) =>{
   const {option} = props
   const containerRef = useRef<HTMLDivElement>(null)
   const chart = useRef(option)
+
   useEffect(()=>{
     if(containerRef.current !== null){
       const  width = document.documentElement.clientWidth
@@ -14,9 +15,13 @@ const  Chart = (props:any) =>{
       chart.current = echarts.init(containerRef.current)
     }
   },[])
+
   useEffect(()=>{
-      chart.current.setOption(option)
+    // chart.current.setOption(option)
+    console.log('chart变化了');
+    chart.current.setOption(option)
   },[option])
+
   return (
            <div ref={containerRef} />
   )

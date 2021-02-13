@@ -15,6 +15,14 @@ const Wrapper = styled.div`
     font-size: 28px;
     color: #81B7AA;
   }
+  .count{
+    margin-top: 10px;
+    font-size: 18px;
+    color: rgba(185, 186, 184,0.9);
+    padding:10px 16px;
+    background-color:#f9faf5;
+    border-radius: 8px;
+  }
   .income{
     margin-top: 15px;
     color: #B7B7B7;

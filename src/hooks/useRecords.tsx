@@ -22,7 +22,7 @@ const useRecords = () => {
   }, records);
 
   // 添加
-  const addRecord = (newRecord: RecordItem) => {
+  const addRecord = (newRecord: RecordItem) =>  {
     if (newRecord.tagIds.length === 0) {
       alert('请输入标签！');
       return false;
@@ -37,7 +37,7 @@ const useRecords = () => {
   };
 
   // 获取 支出的标签
-  const income = records.filter(item => item.category === '-');
+  const income = records.filter(item => item.category === '+');
   // 获取 今日支出的金额
   const incomeMoney = (today:string)=>{
    const todayIncome = income.filter(item => day(item.createdAt).format('DD') === today)
@@ -49,7 +49,7 @@ const useRecords = () => {
     }, 0)
 
   // 获取 收入的标签
-  const expenses = records.filter(item => item.category === '+');
+  const expenses = records.filter(item => item.category === '-');
   // 获取 本月收入的金额
   const expensesMoney = (today:string)=>{
     const mouthExpenses =  expenses.filter(item => day(item.createdAt).format('MM') === today)
@@ -60,7 +60,7 @@ const useRecords = () => {
     return preMoney += amount;
   }, 0)
 
-  return {records, addRecord,incomeMoney,expensesMoney,incomeAll,expensesALL};
+  return {records, addRecord,incomeMoney,expensesMoney,incomeAll,expensesALL,expenses,income};
 };
 
 export {useRecords};

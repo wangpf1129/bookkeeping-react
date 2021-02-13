@@ -1,11 +1,15 @@
-import React, {useState} from 'react';
-import {Chart} from 'components/Chart/Chart';
+import React from 'react';
 import {WrapperChart} from 'components/WrapperChart';
 import day from 'dayjs';
 import _ from 'lodash';
 import {useRecords} from 'hooks/useRecords';
-import {useUpdate} from 'hooks/useUpdate';
 
+// import echarts from 'echarts/lib/echarts'
+import 'echarts/lib/chart/line';
+import 'echarts/lib/component/tooltip';
+import 'echarts/lib/component/legend';
+import ReactEcharts from 'echarts-for-react';
+import {ShowMoney} from 'components/ShowMnoey';
 
 const OverviewChart = () => {
   const {records} = useRecords();
@@ -38,14 +42,10 @@ const OverviewChart = () => {
     return array;
   };
   const getOption = () => {
-    let keys, valuesIncome, valuesExpenses;
-    keys = getArray().map(item => item.key);
-    valuesIncome = getArray().map(item => item.valuesIncome);
-    valuesExpenses = getArray().map(item => item.valuesExpenses);
+    const keys = getArray().map(item => item.key);
+    const valuesIncome = getArray().map(item => item.valuesIncome);
+    const valuesExpenses = getArray().map(item => item.valuesExpenses);
     return {
-      title: {
-        text: '概览'
-      },
       tooltip: {
         trigger: 'axis',
         lineStyle: 'line'
@@ -112,12 +112,14 @@ const OverviewChart = () => {
     };
 
   };
-  console.log(getOption());
-  const [option] = useState(getOption());
 
   return (
           <WrapperChart>
-            <Chart option={option}/>
+            <ShowMoney>
+              <span className="title">总收入</span>
+              <span className="pay">￥123</span>
+            </ShowMoney>
+            <ReactEcharts option={getOption()} lazyUpdate={false}/>
           </WrapperChart>
   );
 };
