@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React, {PropsWithChildren} from 'react';
 
 const Wrapper = styled.div`
-  margin-top: 94px; 
+  margin-top: 68px; 
   display:flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +10,21 @@ const Wrapper = styled.div`
   span{ padding: 5px; font-weight: 700;}
   .title{
     color: #81B7AA;
+  }
+  .titleWrapper{  
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 5px solid #9ccac0;
+    font-size: 26px;
+    padding: 8px; 
+    color: rgba(185, 186, 184,0.9);
+    & .icon{
+      margin-right: 12px;
+      width: 38px;
+      height: 38px;
+      fill:  #9ccac0;
+    }
   }
   .pay{
     font-size: 28px;
@@ -30,12 +45,12 @@ const Wrapper = styled.div`
   }
 `;
 
-const  ShowMoney = (props:PropsWithChildren<any>)=>{
+const ShowMoney = (props: PropsWithChildren<any>) => {
   return (
           <Wrapper>
             {props.children}
           </Wrapper>
-  )
-}
+  );
+};
 
-export {ShowMoney}
+export {ShowMoney};

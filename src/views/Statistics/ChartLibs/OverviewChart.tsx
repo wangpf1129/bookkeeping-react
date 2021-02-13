@@ -1,5 +1,6 @@
 import React from 'react';
 import {WrapperChart} from 'components/WrapperChart';
+import Icon from 'components/Icon';
 import day from 'dayjs';
 import _ from 'lodash';
 import {useRecords} from 'hooks/useRecords';
@@ -8,26 +9,24 @@ import {useRecords} from 'hooks/useRecords';
 import 'echarts/lib/chart/line';
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/legend';
+import 'echarts/lib/component/grid'
 import ReactEcharts from 'echarts-for-react';
 import {ShowMoney} from 'components/ShowMnoey';
 
 const OverviewChart = () => {
-  const {records} = useRecords();
-
+  const {dayTotalList} = useRecords();
   const getArray = () => {
-    const recordsList = records.map(r =>
-            ({createdAt: day(r.createdAt).format('DD'), amount: r.amount, category: r.category}));
     const today = new Date();
     const array = [];
     for (let i = 0; i <= parseInt(day(today).format('DD')) - 1; i++) {
-      const dateString = day(today).subtract(i, 'day').format('DD');
+      const dateString = day(today).subtract(i, 'day').format('YYYY-MM-DD');
       // 寻找recordsList中的createdAt和dateString一样的对象
-      const foundIncome = _.find(recordsList, {createdAt: dateString, category: '+'});
-      const foundExpenses = _.find(recordsList, {createdAt: dateString, category: '-'});
+      const foundIncome = _.find(dayTotalList('+'), {title: dateString});
+      const foundExpenses = _.find(dayTotalList('-'), {title: dateString});
       array.push({
         key: dateString,
-        valuesIncome: foundIncome ? foundIncome.amount : 0,
-        valuesExpenses: foundExpenses ? foundExpenses.amount : 0
+        valuesIncome: foundIncome ? foundIncome.total : 0,
+        valuesExpenses: foundExpenses ? foundExpenses.total : 0
       });
     }
     array.sort((a, b) => {
@@ -40,6 +39,7 @@ const OverviewChart = () => {
       }
     });
     return array;
+
   };
   const getOption = () => {
     const keys = getArray().map(item => item.key);
@@ -51,12 +51,16 @@ const OverviewChart = () => {
         lineStyle: 'line'
       },
       legend: {
-        data: ['支出', '收入']
+        data: ['支出', '收入'],
+        bottom:0,
+        itemWidth:50,
+        itemHeight:2
       },
       grid: {
+        top: '3%',
         left: '3%',
         right: '4%',
-        bottom: '3%',
+        bottom: '12%',
         containLabel: true
       },
       xAxis: [
@@ -116,8 +120,10 @@ const OverviewChart = () => {
   return (
           <WrapperChart>
             <ShowMoney>
-              <span className="title">总收入</span>
-              <span className="pay">￥123</span>
+              <span className="titleWrapper">
+                <Icon name="chart"/>
+                概览
+              </span>
             </ShowMoney>
             <ReactEcharts option={getOption()} lazyUpdate={false}/>
           </WrapperChart>

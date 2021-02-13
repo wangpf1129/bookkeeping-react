@@ -6,7 +6,7 @@ import {ShowMoney} from 'components/ShowMnoey';
 import 'echarts/lib/chart/bar'
 import 'echarts/lib/component/tooltip';
 import ReactEcharts from 'echarts-for-react';
-import {useRecords} from '../../../hooks/useRecords';
+import {useRecords} from 'hooks/useRecords';
 
 
 const IncomeChart = () => {
