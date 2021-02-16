@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   const income = incomeMoney(mouth);
 
   return (
-          <Layout name="TODAY">
+          <Layout  name="TODAY">
             <ShowMoney>
               <span className="title">今日支出</span>
               <span className="pay">￥{expenses.reduce((preMoney, amount) => {

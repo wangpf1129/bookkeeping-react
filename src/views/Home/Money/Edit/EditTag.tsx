@@ -53,14 +53,14 @@ const IconList = styled.section`
   }
 `;
 const Button = styled.section`
-padding-top: 20px;
+ padding-top: 20px;
  display: flex;
  justify-content: center;
  align-items: center;
  margin-bottom: 10px;
  > button{
     outline: none;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 4px;
     padding: 10px 24px;
     margin: 0 24px;

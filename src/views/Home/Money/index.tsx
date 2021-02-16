@@ -14,7 +14,7 @@ const Main = styled.div`
   background-color:#fafbf6;
   flex: 1;
   overflow: auto;
-  &::-webkit-scrollbar{
+  &::-webkit-scrollbar{ 
     display: none;
   }
 `;
@@ -43,6 +43,7 @@ const Money: React.FC = () => {
       window.location.reload();
     }
   };
+
   return (
           <Wrapper>
             <TopNav name="back">
