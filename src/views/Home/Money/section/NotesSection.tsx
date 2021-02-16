@@ -50,7 +50,6 @@ const NotesSection:React.FC<Props>=(props)=> {
 
   const onBlur = ()=>{
     if(noteRef.current !== null){
-      console.log(noteRef.current.value);
       props.onChangeNote(noteRef.current.value.trim())
     }
 

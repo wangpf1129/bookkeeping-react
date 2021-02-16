@@ -69,14 +69,14 @@ const useRecords = () => {
     if (newList.length === 0) {return [];}
 
     type Result = { title: string, total?: number, items: RecordItem[] }[]
-    const result: Result = [{title: day(newList[0].createdAt).format('YYYY-MM-DD'), items: [newList[0]]}];
+    const result: Result = [{title: day(newList[0].createdAt).format('MM/DD'), items: [newList[0]]}];
     for (let i = 1; i < newList.length; i++) {
       const current = newList[i];
       const last = result[result.length - 1];
       if (day(last.title).isSame(day(current.createdAt), 'day')) {
         last.items.push(current);
       } else {
-        result.push({title: day(current.createdAt).format('YYYY-MM-DD'), items: [current]});
+        result.push({title: day(current.createdAt).format('MM/DD'), items: [current]});
       }
     }
     // 将金额相加

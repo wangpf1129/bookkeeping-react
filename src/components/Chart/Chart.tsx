@@ -17,8 +17,6 @@ const  Chart = (props:any) =>{
   },[])
 
   useEffect(()=>{
-    // chart.current.setOption(option)
-    console.log('chart变化了');
     chart.current.setOption(option)
   },[option])
 

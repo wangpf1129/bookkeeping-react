@@ -19,7 +19,7 @@ const OverviewChart = () => {
     const today = new Date();
     const array = [];
     for (let i = 0; i <= parseInt(day(today).format('DD')) - 1; i++) {
-      const dateString = day(today).subtract(i, 'day').format('YYYY-MM-DD');
+      const dateString = day(today).subtract(i, 'day').format('MM/DD');
       // 寻找recordsList中的createdAt和dateString一样的对象
       const foundIncome = _.find(dayTotalList('+'), {title: dateString});
       const foundExpenses = _.find(dayTotalList('-'), {title: dateString});
@@ -39,7 +39,6 @@ const OverviewChart = () => {
       }
     });
     return array;
-
   };
   const getOption = () => {
     const keys = getArray().map(item => item.key);
@@ -114,7 +113,6 @@ const OverviewChart = () => {
         }
       ]
     };
-
   };
 
   return (
@@ -122,7 +120,7 @@ const OverviewChart = () => {
             <ShowMoney>
               <span className="titleWrapper">
                 <Icon name="chart"/>
-                概览
+                支出和收入
               </span>
             </ShowMoney>
             <ReactEcharts option={getOption()} lazyUpdate={false}/>

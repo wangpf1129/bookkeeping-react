@@ -45,9 +45,9 @@ const Statistics: React.FC = () => {
               </ul>
             </Wrapper>
             <Switch>
-              <Route path={`${path}/overview`} component={OverviewChart}/>
-              <Route path={`${path}/expenses`} component={ExpensesChart}/>
-              <Route path={`${path}/income`} component={IncomeChart}/>
+              <Route exact path={`${path}/overview`} component={OverviewChart}/>
+              <Route exact path={`${path}/expenses`} component={ExpensesChart}/>
+              <Route exact path={`${path}/income`} component={IncomeChart}/>
               <Redirect exact from="/statistics" to={`${url}/overview`}/>
             </Switch>
           </Layout>
