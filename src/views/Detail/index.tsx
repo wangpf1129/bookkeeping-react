@@ -9,6 +9,7 @@ import {TypeSection} from 'components/TypeSection';
 import {CategorySection} from '../Home/Money/section/CategorySection';
 import {MoneyLink} from 'components/MoneyLink/MoneyLink';
 
+
 const DateDiv = styled.div`
   font-size: 16px;
   color: #9ccac0;
@@ -128,7 +129,8 @@ const Detail: React.FC = () => {
                                               </div>
                                               <div className="center">
                                                 {item.tagIds.map(tagId =>
-                                                        <span key={tagId} className="nameSpan">{getName(tagId)}</span>)}
+                                                        <span key={tagId}
+                                                              className="nameSpan">{getName(tagId)}</span>)}
                                                 <span className="noteSpan">{item.note || '无备注'}</span>
                                               </div>
                                               <div className="right">

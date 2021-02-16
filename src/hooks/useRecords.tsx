@@ -60,7 +60,6 @@ const useRecords = () => {
   const expensesALL = expenses.map(item => item.amount).reduce((preMoney, amount) => {
     return preMoney += amount;
   }, 0);
-
   // 获取当日的总收入或总支出
   const dayTotalList = (type:string) => {
     // 日期从大到小排

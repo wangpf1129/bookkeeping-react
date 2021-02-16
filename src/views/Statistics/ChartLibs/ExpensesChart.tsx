@@ -7,8 +7,13 @@ import {ShowMoney} from 'components/ShowMnoey';
 import 'echarts/lib/chart/bar';
 import 'echarts/lib/component/tooltip';
 import ReactEcharts from 'echarts-for-react';
+import useTags from '../../../hooks/useTags';
+import {getData} from '../../../common/getData';
 
 const ExpensesChart = () => {
+  const {expensesALL, expenses} = useRecords();
+  const {getName} = useTags();
+
   const getOption = () => {
     return {
       tooltip: {
@@ -20,28 +25,7 @@ const ExpensesChart = () => {
           type: 'pie',
           radius: ['25%', '50%'],
           center: ['50%', '60%'],
-          data: [
-            {
-              value: 335, name: '餐饮',
-              itemStyle: {color: '#ec654f'}, label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
-            },
-            {
-              value: 310, name: '娱乐',
-              itemStyle: {color: '#f5da6e'}, label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
-            },
-            {
-              value: 234, name: '日用',
-              itemStyle: {color: '#efefef'}, label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
-            },
-            {
-              value: 135, name: '果蔬',
-              itemStyle: {color: '#fe6d6d'}, label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
-            },
-            {
-              value: 1548, name: '交通',
-              itemStyle: {color: '#e4e7f8'}, label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
-            }
-          ],
+          data:getData(expenses,expensesALL,getName),
           emphasis: {
             itemStyle: {
               shadowBlur: 10,
@@ -53,7 +37,6 @@ const ExpensesChart = () => {
       ]
     };
   };
-  const {expensesALL,expenses} = useRecords();
 
   return (
           <WrapperChart>
