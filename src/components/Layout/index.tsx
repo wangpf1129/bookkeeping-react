@@ -11,6 +11,9 @@ const Wrapper =styled.div`
 const Main = styled.div`
   flex: 1;
   overflow-y: auto;
+    &::-webkit-scrollbar{
+    display: none;
+  }
 `
 
 type  Props ={

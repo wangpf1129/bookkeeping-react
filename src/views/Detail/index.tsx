@@ -21,6 +21,7 @@ const RecordList = styled.section`
  display:flex;
  flex-direction: column;
  justify-content: center;
+
 `;
 const RecordItems = styled.div`
   background-color:#f9faf5;

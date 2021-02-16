@@ -14,6 +14,9 @@ const Main = styled.div`
   background-color:#fafbf6;
   flex: 1;
   overflow: auto;
+  &::-webkit-scrollbar{
+    display: none;
+  }
 `;
 
 type Category = '-' | '+'
