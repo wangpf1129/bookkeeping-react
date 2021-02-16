@@ -26,20 +26,6 @@ const IncomeChart = () => {
          type: 'pie',
          radius: '55%',
          center: ['50%', '60%'],
-         // data: [
-         //   {
-         //     value: 335, name: '工资',
-         //     itemStyle: {color: '#bbdfd9'}, label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
-         //   },
-         //   {
-         //     value: 310, name: '理财',
-         //     itemStyle: {color: '#e2f0f0'}, label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
-         //   },
-         //   {
-         //     value: 234, name: '副业',
-         //     itemStyle: {color: '#f5fbf9'}, label: {color: '#000'}, labelLine: {lineStyle: {color: '#000'}}
-         //   },
-         // ],
          data:getData(income,incomeAll,getName),
          emphasis: {
            itemStyle: {
