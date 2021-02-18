@@ -33,7 +33,8 @@ const generateOutput = (text: string, output: string) => {
         return output + text;
       }
     case '.':
-      if (output[output.length - 1] === '.' ) return output;
+      if (output[output.length - 1] === '.') return output;
+      if (output.indexOf('.') >= 1) return output;
       return output + '.';
     case'+':
       if (output[output.length - 1] === '+' || output[output.length - 1] === '-') return output;
