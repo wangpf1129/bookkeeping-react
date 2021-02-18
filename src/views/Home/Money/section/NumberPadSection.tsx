@@ -33,6 +33,7 @@ const Wrapper = styled.section`
       background-color:#f0aa9f;
      }
      &.complete{
+      width: calc(40% + 12px);
       background-color:#eec511;
      }
    }
@@ -82,7 +83,6 @@ const NumberPadSection: React.FC<Props> = (props) => {
               <button>8</button>
               <button>9</button>
               <button>-</button>
-              <button>.</button>
               <button>0</button>
               <button>删除</button>
               <button className="complete">
