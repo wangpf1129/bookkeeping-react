@@ -36,6 +36,7 @@ const Money: React.FC = () => {
       ...obj
     });
   };
+
   const onSubmit = () => {
     if (addRecord(selected)) {
       addRecord(selected);
