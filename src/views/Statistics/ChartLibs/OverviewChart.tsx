@@ -38,6 +38,7 @@ const OverviewChart = () => {
         return -1;
       }
     });
+
     return array;
   };
   const getOption = () => {

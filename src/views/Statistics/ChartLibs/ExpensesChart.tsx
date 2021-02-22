@@ -7,8 +7,8 @@ import {ShowMoney} from 'components/ShowMnoey';
 import 'echarts/lib/chart/bar';
 import 'echarts/lib/component/tooltip';
 import ReactEcharts from 'echarts-for-react';
-import useTags from '../../../hooks/useTags';
-import {getData} from '../../../common/getData';
+import useTags from 'hooks/useTags';
+import {getData} from 'common/getData';
 
 const ExpensesChart = () => {
   const {expensesALL, expenses} = useRecords();

@@ -82,7 +82,6 @@ const IconDiv = styled.div`
 `;
 
 const Detail: React.FC = () => {
-
   const [category, setCategory] = useState<'-' | '+'>('-');
   const {records} = useRecords();
   const {getName, getIcon} = useTags();
